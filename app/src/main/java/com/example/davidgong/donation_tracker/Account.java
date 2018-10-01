@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker.Model;
+package com.example.davidgong.donation_tracker;
 
 public class Account {
     private static final int validPasswordLength = 7;

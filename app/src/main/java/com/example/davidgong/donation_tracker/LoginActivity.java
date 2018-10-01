@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker.Controler;
+package com.example.davidgong.donation_tracker;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -29,8 +29,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.davidgong.donation_tracker.R;
 
 import java.util.ArrayList;
 import java.util.List;

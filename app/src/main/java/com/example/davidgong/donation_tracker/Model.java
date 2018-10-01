@@ -1,4 +1,6 @@
-package com.example.davidgong.donation_tracker.Model;
+package com.example.davidgong.donation_tracker;
+
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -24,6 +26,9 @@ public class Model {
     }
 
     public boolean isAccount(String username, String password) {
+        Log.d("App", "" + containsUsername(username));
+        Log.d("App", "" + accounts.get(username).getPassword().equals(password));
+        Log.d("App", "" + accounts.size());
         return containsUsername(username) && accounts.get(username).getPassword().equals(password);
     }
 
