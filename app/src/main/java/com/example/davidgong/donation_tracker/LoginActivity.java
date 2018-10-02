@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,12 +63,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
+        model = Model.getInstance();
         mLoginView = (AutoCompleteTextView) findViewById(R.id.login);
         populateAutoComplete();
 
@@ -179,8 +182,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 //        }
         // for hardcoding purposes, cancel is true until login and password is proper
         // change this when we actually add firebase
-
-        if (!login.equals("user") || !password.equals("pass")) {
+        if (!model.isAccount(login, password)) {
             mLoginView.setError(getString(R.string.error_invalid_user_password));
             focusView = mLoginView;
             cancel = true;
