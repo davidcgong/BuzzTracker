@@ -29,16 +29,19 @@ public class RegistrationActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //setup all variables used
                 String usernametxt = username.getText().toString();
                 String passwordtxt = password.getText().toString();
                 String confirmPasswordtxt = confirmPassword.getText().toString();
                 boolean valid = true;
-
+                //remove any previous errors
                 username.setError(null);
                 password.setError(null);
                 confirmPassword.setError(null);
+                //get errors with username
                 if (TextUtils.isEmpty(usernametxt)) {
                     username.setError(getString(R.string.error_field_required));
+                    valid = false;
                 } else if (model.containsUsername(usernametxt)) {
                     username.setError(getString(R.string.error_username_taken));
                     valid = false;
@@ -46,19 +49,23 @@ public class RegistrationActivity extends AppCompatActivity {
                     username.setError(getString(R.string.error_invalid_username));
                     valid = false;
                 }
+                //get errors with password
                 if (TextUtils.isEmpty(passwordtxt)) {
                     password.setError(getString(R.string.error_field_required));
+                    valid = false;
                 } else if (!model.validPassword(passwordtxt)) {
                     password.setError(getString(R.string.error_invalid_password));
                     valid = false;
                 }
+                //get errors with confirm password
                 if (TextUtils.isEmpty(confirmPasswordtxt)) {
                     confirmPassword.setError(getString(R.string.error_field_required));
+                    valid = false;
                 } else if (!passwordtxt.equals(confirmPasswordtxt)) {
                     confirmPassword.setError(getString(R.string.error_password_mismatch));
                     valid = false;
                 }
-
+                //add new user and move to login activity if no errors occurred
                 if (valid) {
                     model.addAccount(usernametxt, passwordtxt);
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
