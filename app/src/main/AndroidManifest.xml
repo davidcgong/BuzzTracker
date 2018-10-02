@@ -24,9 +24,13 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
+<<<<<<< HEAD
         <activity
             android:name=".RegistrationActivity"
             android:label="RegistrationActivity"/>
+=======
+        <activity android:name=".HomeActivity"></activity>
+>>>>>>> master
     </application>
 
 </manifest>
