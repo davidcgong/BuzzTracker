@@ -59,6 +59,32 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <RadioGroup
+            android:id="@+id/radioUserType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radioUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radioAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioLocationEmployee"
+                android:text="Location Employee"
+                />
+
+        </RadioGroup>
+
     </LinearLayout>
 
     <Button
