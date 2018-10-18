@@ -10,16 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        >
-        <TextView
-            android:id="@+id/textView"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="97dp">
+
+        <Button
+            android:id="@+id/locationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi!"
-            android:textSize="50dp"
-            android:gravity="center"
-            android:includeFontPadding="false"/>
-
+            android:layout_centerHorizontal="true"
+            android:text="Location Data" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

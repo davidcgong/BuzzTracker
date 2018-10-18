@@ -1,11 +1,13 @@
 package com.example.davidgong.donation_tracker;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Model {
     //Singleton Model
     private static final Model instance = new Model();
     private HashMap<String, Account> accounts;
+    private List<Location> locations;
 
     private Model() {
         accounts = new HashMap<>();
@@ -17,6 +19,14 @@ public class Model {
 
     public void addAccount(String username, String password) {
         accounts.put(username, new Account(username, password));
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void addLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     public boolean containsUsername(String username) {
