@@ -6,10 +6,12 @@ public class Account {
 
     private String username;
     private String password;
+    private String accountType;
 
-    public Account(String username, String password) {
+    public Account(String username, String password, String accountType) {
         this.username = username;
         this.password = password;
+        this.accountType = accountType;
     }
 
     public String getUsername() {
@@ -20,6 +22,8 @@ public class Account {
         return password;
     }
 
+    public String getAccountType() {return accountType;}
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -28,12 +32,18 @@ public class Account {
         this.password = password;
     }
 
+    public void setAccountType(String accountType) { this.accountType = accountType; }
+
     public static boolean validPassword(String password) {
         return password.length() > validPasswordLength;
     }
 
     public static boolean validUsername(String username) {
         return username.length() > validUsernameLength;
+    }
+
+    public static boolean validAccountType(String accountType) {
+        return (accountType.equals("Location Employee") || accountType.equals("User") || accountType.equals("Admin"));
     }
 
 

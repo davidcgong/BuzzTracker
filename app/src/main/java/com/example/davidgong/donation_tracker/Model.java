@@ -17,8 +17,8 @@ public class Model {
         return instance;
     }
 
-    public void addAccount(String username, String password) {
-        accounts.put(username, new Account(username, password));
+    public void addAccount(String username, String password, String accountType) {
+        accounts.put(username, new Account(username, password, accountType));
     }
 
     public List<Location> getLocations() {
