@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private boolean employeeCheck(){
-        if (!accountType.equals("Location Employee") || !accountType.equals("Admin")) {
+        if (!accountType.equals("Location Employee") && !accountType.equals("Admin")) {
             Toast.makeText(this, "You're not a location employee or an admin", Toast.LENGTH_SHORT).show();
             return false;
         }

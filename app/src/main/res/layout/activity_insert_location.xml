@@ -27,7 +27,7 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="Drop Off, Store, Warehouse" />
+             />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
