@@ -74,7 +74,11 @@ public class InsertItemActivity extends AppCompatActivity {
                         (Location)spinner.getSelectedItem(), shortDesc.getText().toString(), longDesc.getText().toString(), value.getText().toString(), (Item.ItemType)catSpinner.getSelectedItem());
                 ((Location) spinner.getSelectedItem()).addItem(newItem);
 
-                //Toast.makeText(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(InsertItemActivity.this, HomeActivity.class);
+                intent.putExtra("ACCOUNT_TYPE", "Location Employee");
+                startActivity(intent);
             }
         });
     }
