@@ -70,7 +70,7 @@ public class InsertItemActivity extends AppCompatActivity {
                 String time = timestamp.split(" ")[0];
                 String date = timestamp.split(" ")[1];
 
-                Item newItem = new Item(Integer.parseInt(date.split("/")[2]), Integer.parseInt(date.split("/")[0]), Integer.parseInt(date.split("/")[1]), Integer.parseInt(time.split(" ")[0]), Integer.parseInt(time.split(" ")[1]),
+                Item newItem = new Item(Integer.parseInt(date.split("/")[2]), Integer.parseInt(date.split("/")[0]), Integer.parseInt(date.split("/")[1]), Integer.parseInt(time.split(":")[0]), Integer.parseInt(time.split(":")[1]),
                         (Location)spinner.getSelectedItem(), shortDesc.getText().toString(), longDesc.getText().toString(), value.getText().toString(), (Item.ItemType)catSpinner.getSelectedItem());
                 ((Location) spinner.getSelectedItem()).addItem(newItem);
 

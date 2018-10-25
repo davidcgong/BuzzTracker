@@ -40,6 +40,7 @@
     <string name="title_activity_main2">Main2Activity</string>
 
     <string name="prompt__location_name">Name</string>
+    <string name="prompt__location_type">Location Type</string>
     <string name="prompt_location_latitude">Latitude</string>
     <string name="prompt_location_longitude">Longitude</string>
     <string name="prompt_location_street_address">Street Address</string>
@@ -47,4 +48,5 @@
     <string name="prompt_location_state">State</string>
     <string name="prompt_location_zip">Zip</string>
     <string name="prompt_location_phone">Phone Number</string>
+    <string name="add_location_button" >Add Location</string>
 </resources>
