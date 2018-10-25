@@ -19,6 +19,9 @@ public class Location implements Serializable{
         this.zip = zip;
         this.phoneNumber = phoneNumber;
     }
+    public Location(){
+
+    }
 
     @Override
     public String toString() {

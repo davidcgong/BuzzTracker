@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Location;
@@ -61,14 +62,16 @@ public class InsertLocationActivity extends AppCompatActivity {
                         locationState.getText().toString(),
                         locationZip.getText().toString(),
                         locationNumber.getText().toString());
-
+//                Location loc = new Location;
                 model.addLocation(loc);
 
-                Intent intent = new Intent(InsertLocationActivity.this, HomeActivity.class);
-                startActivity(intent);
+                toastLocationAdded();
             }
 
         });
 
+    }
+    private void toastLocationAdded(){
+        Toast.makeText(this, "Location has been added.", Toast.LENGTH_SHORT).show();
     }
 }
