@@ -1,11 +1,18 @@
 package com.example.davidgong.donation_tracker.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.davidgong.donation_tracker.model.Item;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.R;
+import com.example.davidgong.donation_tracker.model.Model;
 
 public class LocationDetailActivity extends Activity {
 
@@ -17,6 +24,8 @@ public class LocationDetailActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_detail);
+
+        Model model = Model.getInstance();
 
         thisLocation = (Location) getIntent().getSerializableExtra("Location");
 
@@ -32,6 +41,23 @@ public class LocationDetailActivity extends Activity {
         addressText.setText(thisLocation.getStreetAddress() + "\n" + thisLocation.getCity() + "," + thisLocation.getState()
         + "," + thisLocation.getZip());
         phoneNumberText.setText(thisLocation.getPhoneNumber());
+
+        ArrayAdapter adapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, thisLocation.getItems());
+
+        ListView locationList = (ListView) findViewById(R.id._items);
+        locationList.setAdapter(adapter);
+
+        locationList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(LocationDetailActivity.this, ItemDetailActivity.class);
+
+                Item selectedItem = thisLocation.getItems().get(position);
+                intent.putExtra("Item", selectedItem);
+
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -53,6 +53,17 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="113dp" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Items" />
+
+        <ListView
+            android:id="@+id/_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
