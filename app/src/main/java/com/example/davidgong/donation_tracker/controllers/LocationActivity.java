@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.davidgong.donation_tracker.model.Location;
+import com.example.davidgong.donation_tracker.model.Model;
+import com.example.davidgong.donation_tracker.R;
 
 public class LocationActivity extends Activity {
 

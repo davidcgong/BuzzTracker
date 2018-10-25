@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.davidgong.donation_tracker.HomeActivity">
+    tools:context="com.example.davidgong.donation_tracker.controllers.HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,6 +19,24 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Location Data" />
+
+        <Button
+            android:id="@+id/insertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/locationButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-86dp"
+            android:text="Insert Item" />
+
+        <Button
+            android:id="@+id/insertLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locationButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="46dp"
+            android:text="Insert Location" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

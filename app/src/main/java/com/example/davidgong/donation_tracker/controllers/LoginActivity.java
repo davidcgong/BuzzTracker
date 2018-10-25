@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.controllers;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -20,7 +20,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,7 +29,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.davidgong.donation_tracker.model.Model;
+import com.example.davidgong.donation_tracker.R;
 
 import java.util.ArrayList;
 import java.util.List;

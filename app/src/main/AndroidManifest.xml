@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".controllers.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,19 +22,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".controllers.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".controllers.RegistrationActivity"
             android:label="RegistrationActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".controllers.HomeActivity"
             android:label="Home" />
         <activity
-            android:name=".LocationActivity"
+            android:name=".controllers.LocationActivity"
             android:label="@string/title_activity_location" />
         <activity
-            android:name=".LocationDetailActivity"
+            android:name=".controllers.LocationDetailActivity"
             android:label="@string/title_activity_location_detail"></activity>
     </application>
 

@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".controllers.RegistrationActivity">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="294dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/txt_password"
                 android:layout_width="match_parent"
@@ -50,6 +51,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/txt_confirmPassword"
                 android:layout_width="match_parent"
@@ -59,29 +61,40 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_location" />
+
+        <Spinner
+            android:id="@+id/locationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <RadioGroup
             android:id="@+id/radioUserType"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/radioUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User"
-                android:checked="true" />
+                android:checked="true"
+                android:text="User" />
 
             <RadioButton
                 android:id="@+id/radioAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Admin" />
+
             <RadioButton
+                android:id="@+id/radioLocationEmployee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioLocationEmployee"
-                android:text="Location Employee"
-                />
+                android:text="Location Employee" />
 
         </RadioGroup>
 
@@ -91,15 +104,21 @@
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
         android:layout_weight="1"
         android:text="@string/action_register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
 
 </android.support.constraint.ConstraintLayout>

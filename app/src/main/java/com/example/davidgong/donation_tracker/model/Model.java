@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +19,10 @@ public class Model {
 
     public void addAccount(String username, String password, String accountType) {
         accounts.put(username, new Account(username, password, accountType));
+    }
+
+    public void addAccount(String username, String password, String accountType, String location) {
+        accounts.put(username, new Account(username, password, accountType, location));
     }
 
     public List<Location> getLocations() {

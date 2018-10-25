@@ -7,6 +7,7 @@
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_confirm_password">Confirm password</string>
+    <string name="prompt_location">Location (for employees only)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_register">Register</string>

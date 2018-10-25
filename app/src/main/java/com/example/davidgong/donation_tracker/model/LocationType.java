@@ -1,10 +1,7 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public enum LocationType implements Parcelable {
     DROP_OFF ("Drop Off"), STORE("Store"), WAREHOUSE("Warehouse");

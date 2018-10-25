@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.model;
 
 public class Account {
     private static final int validPasswordLength = 7;
@@ -8,10 +8,20 @@ public class Account {
     private String password;
     private String accountType;
 
+    private String locationAccess;
+
     public Account(String username, String password, String accountType) {
         this.username = username;
         this.password = password;
         this.accountType = accountType;
+        this.locationAccess = null;
+    }
+
+    public Account(String username, String password, String accountType, String locationAccess) {
+        this.username = username;
+        this.password = password;
+        this.accountType = accountType;
+        this.locationAccess = locationAccess;
     }
 
     public String getUsername() {
@@ -32,6 +42,14 @@ public class Account {
         this.password = password;
     }
 
+    public String getLocationAccess() {
+        return locationAccess;
+    }
+
+    public void setLocationAccess(String locationAccess) {
+        this.locationAccess = locationAccess;
+    }
+
     public void setAccountType(String accountType) { this.accountType = accountType; }
 
     public static boolean validPassword(String password) {
@@ -45,7 +63,6 @@ public class Account {
     public static boolean validAccountType(String accountType) {
         return (accountType.equals("Location Employee") || accountType.equals("User") || accountType.equals("Admin"));
     }
-
 
     @Override
     public boolean equals(Object other) {
