@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.davidgong.donation_tracker.model.CSVFile;
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
@@ -32,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         model = Model.getInstance();
+
+        //hardcoding my name in because it's annoying to register all the time
+        model.addAccount("abhishek", "abhishek", "Location Employee", "asdf");
 
         loginButton = (Button) findViewById(R.id.logIn_button);
         registrationButton = (Button) findViewById(R.id.registration_button);
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        model.addLocations(locations);
+        model.addAllLocations(locations);
         Log.i("locations list size", Integer.toString(locations.size()));
     }
 }

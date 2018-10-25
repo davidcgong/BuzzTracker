@@ -25,11 +25,15 @@ public class Model {
         accounts.put(username, new Account(username, password, accountType, location));
     }
 
+    public void addLocation(Location a){
+        locations.add(a);
+    }
+
     public List<Location> getLocations() {
         return locations;
     }
 
-    public void addLocations(List<Location> locations) {
+    public void addAllLocations(List<Location> locations) {
         this.locations = locations;
     }
 
