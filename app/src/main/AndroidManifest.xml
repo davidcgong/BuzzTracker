@@ -31,11 +31,13 @@
             android:name=".controllers.HomeActivity"
             android:label="Home" />
         <activity
-            android:name=".controllers.LocationActivity"
+            android:name=".controllers.LocationViewActivity"
             android:label="@string/title_activity_location" />
         <activity
             android:name=".controllers.LocationDetailActivity"
-            android:label="@string/title_activity_location_detail"></activity>
+            android:label="@string/title_activity_location_detail" />
+        <activity android:name=".controllers.InsertLocationActivity" />
+        <activity android:name=".controllers.InsertItemActivity"></activity>
     </application>
 
 </manifest>

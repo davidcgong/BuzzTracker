@@ -3,7 +3,6 @@ package com.example.davidgong.donation_tracker.controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,17 +14,14 @@ import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
 import com.example.davidgong.donation_tracker.R;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
 public class HomeActivity extends AppCompatActivity {
 
     private Model model;
 
     private Button viewLocationsButton;
+    private Button insertLocationsButton;
+    private Button insertItemButton;
+    private String accountType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +30,40 @@ public class HomeActivity extends AppCompatActivity {
         model = Model.getInstance();
 //        loadLocationData();
 
-        String accountType = getIntent().getStringExtra("ACCOUNT_TYPE");
+        accountType = getIntent().getStringExtra("ACCOUNT_TYPE");
         //if account type was determined to be location employee, show loc emp functionality
         if (accountType.equals("Location Employee")) {
             Toast.makeText(this, "Welcome, Location Employee!", Toast.LENGTH_SHORT).show();
         }
 
-        viewLocationsButton = (Button) findViewById(R.id.locationButton);
+        viewLocationsButton = (Button) findViewById(R.id.locationViewButton);
         viewLocationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, LocationActivity.class);
+                Intent intent = new Intent(HomeActivity.this, LocationViewActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        insertLocationsButton = (Button) findViewById(R.id.insertLocationButton);
+        insertLocationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(employeeCheck()) {
+                    Intent intent = new Intent(HomeActivity.this, InsertLocationActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        insertItemButton = (Button) findViewById(R.id.insertItemButton);
+        insertItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (employeeCheck()) {
+                    Intent intent = new Intent(HomeActivity.this, InsertItemActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -68,6 +86,14 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(returnToMain);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean employeeCheck(){
+        if (!accountType.equals("Location Employee") || !accountType.equals("Admin")) {
+            Toast.makeText(this, "You're not a location employee or an admin", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
 //    private void loadLocationData() {
