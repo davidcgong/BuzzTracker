@@ -72,6 +72,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         model = Model.getInstance();
+        //test case accounts, so we don't have to make a new account evrey single time
+        model.addAccount("davidcgong", "cs2340cool", "Location Employee");
+
         mLoginView = (AutoCompleteTextView) findViewById(R.id.login);
         populateAutoComplete();
 
