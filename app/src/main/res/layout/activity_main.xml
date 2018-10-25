@@ -25,13 +25,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/logIn_button"
             android:text="Log in"
+
+
              />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/registration_button"
-            android:text="Registration"
+
+
+            android:text="Sign up"
 
             />
 
@@ -47,3 +51,4 @@
         android:text="Locations" />
 
 </RelativeLayout>
+
