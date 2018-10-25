@@ -30,6 +30,12 @@ public class HomeActivity extends AppCompatActivity {
         model = Model.getInstance();
         loadLocationData();
 
+        String accountType = getIntent().getStringExtra("ACCOUNT_TYPE");
+        //if account type was determined to be location employee, show loc emp functionality
+        if (accountType.equals("Location Employee")) {
+            Toast.makeText(this, "Welcome, Location Employee!", Toast.LENGTH_SHORT).show();
+        }
+
         viewLocationsButton = (Button) findViewById(R.id.locationButton);
         viewLocationsButton.setOnClickListener(new View.OnClickListener() {
             @Override

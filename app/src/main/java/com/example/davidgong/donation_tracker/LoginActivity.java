@@ -198,10 +198,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(login, password);
-            Toast.makeText(this, "Login credentials have been verified.", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Login credentials have been verified.", Toast.LENGTH_SHORT).show();
             mAuthTask.execute((Void) null);
             //navigate to next activity which is user's home page (later on add user details here)
              Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+             //pass in the account type before signing in so the HomeActivity controller knows how to handle what to display
+            // make sure that username has to be unique for all users or else we have to check password difference too
+             intent.putExtra("ACCOUNT_TYPE", model.getAccountType(login));
              startActivity(intent);
         }
     }

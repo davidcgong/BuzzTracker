@@ -44,4 +44,9 @@ public class Model {
     public boolean validUsername(String username) {
         return Account.validUsername(username);
     }
+
+    //get account type for LoginActivity
+    public String getAccountType(String username) {
+        return accounts.get(username).getAccountType();
+    }
 }
