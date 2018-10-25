@@ -120,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
 //
 //        }
 //
-//        model.addAllLocations(locations);
+//        model.addLocations(locations);
 //        Log.i("locations list size", Integer.toString(locations.size()));
 //    }
 }

@@ -25,9 +25,6 @@ public class Location implements Serializable{
 
         items = new ArrayList<Item>();
     }
-    public Location(){
-
-    }
 
     @Override
     public String toString() {
