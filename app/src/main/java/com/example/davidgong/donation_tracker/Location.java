@@ -2,8 +2,7 @@ package com.example.davidgong.donation_tracker;
 
 import java.io.Serializable;
 
-public class Location implements Serializable{
-
+public class Location implements Serializable {
     private String locationName, locationType, streetAddress, city, state, zip, phoneNumber;
     private double latitude, longitude;
 

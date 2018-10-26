@@ -6,11 +6,13 @@ import java.util.List;
 public class Model {
     //Singleton Model
     private static final Model instance = new Model();
+    private LocationManager locationManager;
     private HashMap<String, Account> accounts;
     private List<Location> locations;
 
     private Model() {
         accounts = new HashMap<>();
+        locationManager = new LocationManager();
     }
 
     public static Model getInstance() {
