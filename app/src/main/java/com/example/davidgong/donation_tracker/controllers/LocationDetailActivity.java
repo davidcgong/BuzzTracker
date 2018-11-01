@@ -58,6 +58,13 @@ public class LocationDetailActivity extends Activity {
 
         loadItemList("", Item.ItemType.NONE);
 
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadItemList(searchView.getQuery().toString(), (Item.ItemType) catSpinner.getSelectedItem());
+            }
+        });
+
     }
 
 
@@ -87,7 +94,7 @@ public class LocationDetailActivity extends Activity {
         }
 
         if(adapter.isEmpty()){
-            Toast.makeText(this, "There are no items with that search", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, search, Toast.LENGTH_LONG).show();
         }
 
         ListView itemList = (ListView) findViewById(R.id._items);
