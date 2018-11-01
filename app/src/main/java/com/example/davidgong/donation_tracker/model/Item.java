@@ -11,7 +11,7 @@ public class Item implements Serializable{
     private ItemType itemType;
 
     public enum ItemType {
-        CLOTHING, HAT, KITCHEN, ELECTRONICS, HOUSEHOLD, OTHER
+        NONE, CLOTHING, HAT, KITCHEN, ELECTRONICS, HOUSEHOLD, OTHER
     }
 
     public Item(int day, int month, int year, int hour, int minute, Location location, String shortDesc, String longDesc, String value, ItemType itemType) {
