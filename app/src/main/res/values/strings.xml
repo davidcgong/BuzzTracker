@@ -48,5 +48,7 @@
     <string name="prompt_location_state">State</string>
     <string name="prompt_location_zip">Zip</string>
     <string name="prompt_location_phone">Phone Number</string>
-    <string name="add_location_button" >Add Location</string>
+    <string name="add_location_button">Add Location</string>
+    <string name="title_activity_item_detail">ItemDetailActivity</string>
+    <string name="prompt_search">Search</string>
 </resources>

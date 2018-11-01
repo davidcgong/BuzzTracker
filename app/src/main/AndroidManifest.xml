@@ -37,7 +37,10 @@
             android:name=".controllers.LocationDetailActivity"
             android:label="@string/title_activity_location_detail" />
         <activity android:name=".controllers.InsertLocationActivity" />
-        <activity android:name=".controllers.InsertItemActivity"></activity>
+        <activity android:name=".controllers.InsertItemActivity" />
+        <activity
+            android:name=".controllers.ItemDetailActivity"
+            android:label="@string/title_activity_item_detail"></activity>
     </application>
 
 </manifest>
