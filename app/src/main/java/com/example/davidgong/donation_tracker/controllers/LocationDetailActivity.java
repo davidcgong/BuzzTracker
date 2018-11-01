@@ -58,11 +58,30 @@ public class LocationDetailActivity extends Activity {
 
         loadItemList("", Item.ItemType.NONE);
 
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                loadItemList(searchView.getQuery().toString(), Item.ItemType.NONE);
+                return true;
+            }
+        });
+
+        catSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 loadItemList(searchView.getQuery().toString(), (Item.ItemType) catSpinner.getSelectedItem());
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
         });
 
     }
@@ -94,7 +113,7 @@ public class LocationDetailActivity extends Activity {
         }
 
         if(adapter.isEmpty()){
-            Toast.makeText(this, search, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
         }
 
         ListView itemList = (ListView) findViewById(R.id._items);
