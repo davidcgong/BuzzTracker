@@ -1,19 +1,27 @@
 package com.example.davidgong.donation_tracker.controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +47,19 @@ public class MainActivity extends AppCompatActivity {
         registrationButton = (Button) findViewById(R.id.registration_button);
 //        locationsButton = (Button) findViewById(R.id.locations_button);
 
-        loadLocationData(); // load default location data
+        boolean clearSavedModel = false;
+
+        if (clearSavedModel && (new File(getFilesDir().getAbsolutePath() + "/" + model.locationFile)).exists()) {
+            (new File(getFilesDir().getAbsolutePath() + "/" + model.locationFile)).delete();
+        }
+
+
+        if ((new File(getFilesDir().getAbsolutePath() + "/" + model.locationFile)).exists()) {
+            loadModel();
+        } else {
+            // load default location data
+            loadLocationData();
+        }
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +85,25 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+        private void loadModel() {
+            FileInputStream fin = null;
+            ObjectInputStream ois = null;
+
+            try {
+                fin = getApplicationContext().openFileInput(model.locationFile);
+                ois = new ObjectInputStream(fin);
+                Model savedModel = (Model) ois.readObject();
+                ois.close();
+
+                model.loadModel(savedModel);
+
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            } catch (ClassNotFoundException cnfe) {
+                cnfe.printStackTrace();
+            }
+        }
 
         private void loadLocationData() {
         InputStream is = getResources().openRawResource(getResources().getIdentifier("location_data", "raw", getPackageName()));

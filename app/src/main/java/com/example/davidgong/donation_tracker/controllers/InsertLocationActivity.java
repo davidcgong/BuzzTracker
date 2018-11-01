@@ -1,5 +1,6 @@
 package com.example.davidgong.donation_tracker.controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,10 @@ import android.widget.Toast;
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 
 public class InsertLocationActivity extends AppCompatActivity {
@@ -64,6 +69,7 @@ public class InsertLocationActivity extends AppCompatActivity {
                         locationNumber.getText().toString());
 //                Location loc = new Location;
                 model.addLocation(loc);
+                writeModel();
 
                 toastLocationAdded();
             }
@@ -73,5 +79,20 @@ public class InsertLocationActivity extends AppCompatActivity {
     }
     private void toastLocationAdded(){
         Toast.makeText(this, "Location has been added.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void writeModel() {
+        FileOutputStream fout = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            fout = getApplicationContext().openFileOutput(model.locationFile, Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fout);
+            oos.writeObject(model);
+            oos.close();
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }

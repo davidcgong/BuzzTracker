@@ -1,6 +1,8 @@
 package com.example.davidgong.donation_tracker.model;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable{
     private static final int validPasswordLength = 7;
     private static final int validUsernameLength = 7;
 

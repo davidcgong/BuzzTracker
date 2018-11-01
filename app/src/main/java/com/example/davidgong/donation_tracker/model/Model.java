@@ -1,10 +1,16 @@
 package com.example.davidgong.donation_tracker.model;
 
+import android.content.Context;
+
+import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-public class Model {
+public class Model implements Serializable{
     //Singleton Model
+    public String locationFile = "model";
+
     private static final Model instance = new Model();
     private HashMap<String, Account> accounts;
     private List<Location> locations;
@@ -15,6 +21,11 @@ public class Model {
 
     public static Model getInstance() {
         return instance;
+    }
+
+    public void loadModel(Model savedModel) {
+        addAllLocations(savedModel.getLocations());
+        updateAccounts(savedModel.getAccounts());
     }
 
     public void addAccount(String username, String password, String accountType) {
@@ -33,8 +44,16 @@ public class Model {
         return locations;
     }
 
+    public HashMap<String, Account> getAccounts() {
+        return accounts;
+    }
+
     public void addAllLocations(List<Location> locations) {
         this.locations = locations;
+    }
+
+    public void updateAccounts(HashMap<String, Account> savedAccounts) {
+        this.accounts = savedAccounts;
     }
 
     public boolean containsUsername(String username) {

@@ -1,5 +1,6 @@
 package com.example.davidgong.donation_tracker.controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,10 @@ import android.widget.Spinner;
 
 import com.example.davidgong.donation_tracker.model.Model;
 import com.example.davidgong.donation_tracker.R;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class RegistrationActivity extends AppCompatActivity {
     private AutoCompleteTextView username;
@@ -94,10 +99,28 @@ public class RegistrationActivity extends AppCompatActivity {
                     }else {
                         model.addAccount(usernametxt, passwordtxt, usertypetxt);
                     }
+
+                    writeModel();
+
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }
         });
+    }
+
+    private void writeModel() {
+        FileOutputStream fout = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            fout = getApplicationContext().openFileOutput(model.locationFile, Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fout);
+            oos.writeObject(model);
+            oos.close();
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }

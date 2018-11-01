@@ -3,6 +3,7 @@ package com.example.davidgong.donation_tracker.controllers;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,9 @@ import com.example.davidgong.donation_tracker.model.Item;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,12 +34,14 @@ public class InsertItemActivity extends AppCompatActivity {
     private Spinner spinner, catSpinner;
     private TextView shortDesc, longDesc, value;
 
+    private Model model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_item);
 
-        Model model = Model.getInstance();
+        model = Model.getInstance();
 
         ArrayAdapter adapter = new ArrayAdapter<Location>(this, android.R.layout.simple_list_item_1, model.getLocations());
 
@@ -74,6 +80,8 @@ public class InsertItemActivity extends AppCompatActivity {
                         (Location)spinner.getSelectedItem(), shortDesc.getText().toString(), longDesc.getText().toString(), value.getText().toString(), (Item.ItemType)catSpinner.getSelectedItem());
                 ((Location) spinner.getSelectedItem()).addItem(newItem);
 
+                writeModel();
+
                 Toast.makeText(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(InsertItemActivity.this, HomeActivity.class);
@@ -83,6 +91,20 @@ public class InsertItemActivity extends AppCompatActivity {
         });
     }
 
+    private void writeModel() {
+        FileOutputStream fout = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            fout = getApplicationContext().openFileOutput(model.locationFile, Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fout);
+            oos.writeObject(model);
+            oos.close();
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
         public Dialog onCreateDialog(Bundle savedInstanceState) {
