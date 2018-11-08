@@ -24,19 +24,29 @@
             android:id="@+id/insertItemButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/locationViewButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="-86dp"
+            android:layout_below="@+id/locationViewButton"
             android:text="Insert Item" />
 
         <Button
             android:id="@+id/insertLocationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/locationViewButton"
+            android:layout_below="@+id/insertItemButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp"
             android:text="Insert Location" />
+
     </RelativeLayout>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="329dp"
+        android:layout_height="167dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="384dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,8 +1,10 @@
 package com.example.davidgong.donation_tracker.controllers;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,14 +15,24 @@ import android.widget.Toast;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
 import com.example.davidgong.donation_tracker.R;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private Model model;
 
     private Button viewLocationsButton;
     private Button insertLocationsButton;
     private Button insertItemButton;
+    private MapView locationMap;
     private String accountType;
 
     @Override
@@ -35,6 +47,13 @@ public class HomeActivity extends AppCompatActivity {
         if (accountType.equals("Location Employee")) {
             Toast.makeText(this, "Welcome, Location Employee!", Toast.LENGTH_SHORT).show();
         }
+
+        // For generating the map,
+        //David referred to this https://developers.google.com/maps/documentation/android-sdk/map-with-marker
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+
 
         viewLocationsButton = (Button) findViewById(R.id.locationViewButton);
         viewLocationsButton.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +87,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         setTitle("Home");
@@ -94,6 +114,17 @@ public class HomeActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        for (Location location : model.getLocations()) {
+            // Add markers for locations
+            double currLatitude = location.getLatitude();
+            double currLongitude = location.getLongitude();
+            LatLng aLocation = new LatLng(currLatitude, currLongitude);
+            googleMap.addMarker(new MarkerOptions().position(aLocation).title(location.getLocationName()));
+        }
     }
 
 //    private void loadLocationData() {
