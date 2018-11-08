@@ -15,8 +15,10 @@ import android.widget.Toast;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
 import com.example.davidgong.donation_tracker.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -24,6 +26,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static java.security.AccessController.getContext;
 
 public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -32,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button viewLocationsButton;
     private Button insertLocationsButton;
     private Button insertItemButton;
+    private Button locationMapButton;
     private String accountType;
 
     @Override
@@ -46,12 +52,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (accountType.equals("Location Employee")) {
             Toast.makeText(this, "Welcome, Location Employee!", Toast.LENGTH_SHORT).show();
         }
-
-        // For generating the map,
-        //David referred to this https://developers.google.com/maps/documentation/android-sdk/map-with-marker
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
 
 
         viewLocationsButton = (Button) findViewById(R.id.locationViewButton);
@@ -82,6 +82,15 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Intent intent = new Intent(HomeActivity.this, InsertItemActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        locationMapButton = (Button) findViewById(R.id.locationMapButton);
+        locationMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -117,13 +126,18 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        for (Location location : model.getLocations()) {
-            // Add markers for locations
-            double currLatitude = location.getLatitude();
-            double currLongitude = location.getLongitude();
-            LatLng aLocation = new LatLng(currLatitude, currLongitude);
-            googleMap.addMarker(new MarkerOptions().position(aLocation).title(location.getLocationName()));
-        }
+//        int index = 0;
+//        for (Location location : model.getLocations()) {
+//            // Add markers for locations
+//            Log.d("whatever", "Location " + index + ": " + location.getLocationName());
+//            double currLatitude = location.getLatitude();
+//            double currLongitude = location.getLongitude();
+//            LatLng aLocation = new LatLng(currLatitude, currLongitude);
+//            googleMap.addMarker(new MarkerOptions().position(aLocation).title(location.getLocationName()));
+//            index++;
+//        }
+
+
     }
 
 //    private void loadLocationData() {

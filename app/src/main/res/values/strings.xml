@@ -51,4 +51,5 @@
     <string name="add_location_button">Add Location</string>
     <string name="title_activity_item_detail">ItemDetailActivity</string>
     <string name="prompt_search">Search</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
