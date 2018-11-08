@@ -110,7 +110,7 @@ public class MapsActivity extends FragmentActivity {
                         MapMarker mapMarker = new MapMarker();
                         mapMarker.setCoordinate(currentCoordinates);
                         mapMarker.setTitle(location.getLocationName());
-                        mapMarker.setDescription(location.getLocationType() + " Location");
+                        mapMarker.setDescription(location.getLocationType() + " Location\n" + "Phone Number: " + location.getPhoneNumber());
                         Log.d("MapsActivity", "Location " + counter + ": " + mapMarker.getTitle());
                         map.addMapObject(mapMarker);
                         counter++;
