@@ -32,7 +32,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button viewLocationsButton;
     private Button insertLocationsButton;
     private Button insertItemButton;
-    private MapView locationMap;
     private String accountType;
 
     @Override

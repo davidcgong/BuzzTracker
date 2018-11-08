@@ -41,6 +41,10 @@
         <activity
             android:name=".controllers.ItemDetailActivity"
             android:label="@string/title_activity_item_detail"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAlIr21R5EHgH1Zx2PpG4SEPelhG8rDi5U"/>
+
     </application>
 
 </manifest>
