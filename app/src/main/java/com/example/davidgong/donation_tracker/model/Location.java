@@ -1,10 +1,14 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Location implements Serializable {
     private String locationName, locationType, streetAddress, city, state, zip, phoneNumber;
     private double latitude, longitude;
+
+    private List<Item> items;
 
     public Location(String locationName, String locationType, double latitude, double longitude,
                     String streetAddress, String city, String state, String zip, String phoneNumber) {
@@ -17,6 +21,11 @@ public class Location implements Serializable {
         this.state = state;
         this.zip = zip;
         this.phoneNumber = phoneNumber;
+
+        items = new ArrayList<Item>();
+    }
+    public Location(){
+
     }
 
     @Override
@@ -60,6 +69,9 @@ public class Location implements Serializable {
         return longitude;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
 
     public void setLocationName(String locationName) {
         this.locationName = locationName;
@@ -95,5 +107,9 @@ public class Location implements Serializable {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public void addItem(Item newItem) {
+        items.add(newItem);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.davidgong.donation_tracker;
+package com.example.davidgong.donation_tracker.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,14 +8,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class LocationActivity extends Activity {
+import com.example.davidgong.donation_tracker.model.Location;
+import com.example.davidgong.donation_tracker.model.Model;
+import com.example.davidgong.donation_tracker.R;
+
+public class LocationViewActivity extends Activity {
 
     private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location);
+        setContentView(R.layout.activity_location_view);
 
         model = Model.getInstance();
 
@@ -27,7 +31,7 @@ public class LocationActivity extends Activity {
         locationList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(LocationActivity.this, LocationDetailActivity.class);
+                Intent intent = new Intent(LocationViewActivity.this, LocationDetailActivity.class);
 
                 Location selectedLocation = model.getLocations().get(position);
                 intent.putExtra("Location", selectedLocation);

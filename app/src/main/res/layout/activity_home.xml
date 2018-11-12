@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.davidgong.donation_tracker.HomeActivity">
+    tools:context="com.example.davidgong.donation_tracker.controllers.HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,11 +14,38 @@
         tools:layout_editor_absoluteY="97dp">
 
         <Button
-            android:id="@+id/locationButton"
+            android:id="@+id/locationViewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Location Data" />
+
+        <Button
+            android:id="@+id/insertItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/locationViewButton"
+            android:text="Insert Item" />
+
+        <Button
+            android:id="@+id/insertLocationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/insertItemButton"
+            android:layout_centerHorizontal="true"
+            android:text="Insert Location" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/insertLocationButton"
+            android:text="Location Map"
+            android:id="@+id/locationMapButton"
+            />
+
     </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>

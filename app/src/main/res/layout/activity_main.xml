@@ -25,16 +25,30 @@
             android:layout_height="wrap_content"
             android:id="@+id/logIn_button"
             android:text="Log in"
+
+
              />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/registration_button"
-            android:text="Registration"
+
+
+            android:text="Sign up"
 
             />
 
     </LinearLayout>
 
+    <!--<Button-->
+        <!--android:id="@+id/locations_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="209dp"-->
+        <!--android:text="Locations" />-->
+
 </RelativeLayout>
+
