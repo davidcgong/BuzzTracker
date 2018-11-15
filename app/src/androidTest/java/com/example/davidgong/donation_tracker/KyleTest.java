@@ -28,6 +28,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class KyleTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
+
     @Test
     public void testEmptyPassword() {
         MainActivity a = mActivityRule.getActivity();
@@ -38,11 +39,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError() == null);
+        assert (tu.getError() == null);
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError().toString().equals(a.getString(R.string.error_field_required)));
+        assert (tp.getError().toString().equals(a.getString(R.string.error_field_required)));
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError().toString().equals(a.getString(R.string.error_password_mismatch)));
+        assert (tc.getError().toString().equals(a.getString(R.string.error_password_mismatch)));
         Espresso.pressBack();
     }
 
@@ -56,11 +57,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError().equals(a.getString(R.string.error_field_required)));
+        assert (tu.getError().equals(a.getString(R.string.error_field_required)));
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError() == null);
+        assert (tp.getError() == null);
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError() == null);
+        assert (tc.getError() == null);
         Espresso.pressBack();
     }
 
@@ -74,11 +75,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError() == null);
+        assert (tu.getError() == null);
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError() == null);
+        assert (tp.getError() == null);
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError().equals(a.getString(R.string.error_field_required)));
+        assert (tc.getError().equals(a.getString(R.string.error_field_required)));
         Espresso.pressBack();
     }
 
@@ -92,11 +93,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError() == null);
+        assert (tu.getError() == null);
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError().equals(a.getString(R.string.error_invalid_password)));
+        assert (tp.getError().equals(a.getString(R.string.error_invalid_password)));
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError() == null);
+        assert (tc.getError() == null);
         Espresso.pressBack();
     }
 
@@ -110,11 +111,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError().equals(a.getString(R.string.error_invalid_username)));
+        assert (tu.getError().equals(a.getString(R.string.error_invalid_username)));
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError() == null);
+        assert (tp.getError() == null);
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError() == null);
+        assert (tc.getError() == null);
         Espresso.pressBack();
     }
 
@@ -128,11 +129,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError() == null);
+        assert (tu.getError() == null);
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError() == null);
+        assert (tp.getError() == null);
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError().equals(a.getString(R.string.error_password_mismatch)));
+        assert (tc.getError().equals(a.getString(R.string.error_password_mismatch)));
         Espresso.pressBack();
     }
 
@@ -146,11 +147,11 @@ public class KyleTest {
         onView(withId(R.id.radioUser)).perform(click());
         onView(withId(R.id.btn_register)).perform(click());
         TextView tu = a.findViewById(R.id.txt_username);
-        assert(tu.getError().equals(a.getString(R.string.error_username_taken)));
+        assert (tu.getError().equals(a.getString(R.string.error_username_taken)));
         TextView tp = a.findViewById(R.id.txt_password);
-        assert(tp.getError() == null);
+        assert (tp.getError() == null);
         TextView tc = a.findViewById(R.id.txt_confirmPassword);
-        assert(tc.getError() == null);
+        assert (tc.getError() == null);
         Espresso.pressBack();
     }
 }

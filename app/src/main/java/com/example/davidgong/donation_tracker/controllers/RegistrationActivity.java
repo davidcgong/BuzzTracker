@@ -2,8 +2,8 @@ package com.example.davidgong.donation_tracker.controllers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,8 +14,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import com.example.davidgong.donation_tracker.model.Model;
 import com.example.davidgong.donation_tracker.R;
+import com.example.davidgong.donation_tracker.model.Model;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private Spinner locationSpinner;
-    private Model model = Model.getInstance();
+    private final Model model = Model.getInstance();
     private RadioGroup radioGroup;
     private RadioButton radioButton;
 
@@ -36,14 +36,14 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         //grabbing veiws
-        Button registerBtn = (Button) findViewById(R.id.btn_register);
-        username = (AutoCompleteTextView) findViewById(R.id.txt_username);
-        password = (EditText) findViewById(R.id.txt_password);
-        confirmPassword = (EditText) findViewById(R.id.txt_confirmPassword);
-        locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
-        radioGroup = (RadioGroup) findViewById(R.id.radioUserType);
+        Button registerBtn = findViewById(R.id.btn_register);
+        username = findViewById(R.id.txt_username);
+        password = findViewById(R.id.txt_password);
+        confirmPassword = findViewById(R.id.txt_confirmPassword);
+        locationSpinner = findViewById(R.id.locationSpinner);
+        radioGroup = findViewById(R.id.radioUserType);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, model.getLocations());
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, model.getLocations());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(adapter);
 
@@ -53,7 +53,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 //get selected radio buttom from radioGroup
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 //setup all variables used
-                radioButton = (RadioButton) findViewById(selectedId);
+                radioButton = findViewById(selectedId);
                 String usernametxt = username.getText().toString();
                 String passwordtxt = password.getText().toString();
                 String usertypetxt = radioButton.getText().toString();
@@ -94,9 +94,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 //add new user and move to login activity if no errors occurred
                 if (valid) {
-                    if(usertypetxt == "Location Employee"){
+                    if (usertypetxt == "Location Employee") {
                         model.addAccount(usernametxt, passwordtxt, usertypetxt, location);
-                    }else {
+                    } else {
                         model.addAccount(usernametxt, passwordtxt, usertypetxt);
                     }
 

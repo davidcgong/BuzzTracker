@@ -1,14 +1,11 @@
 package com.example.davidgong.donation_tracker.controllers;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,24 +32,24 @@ public class InsertLocationActivity extends AppCompatActivity {
 
     private Button locationAddButton;
 
-    private Model model = Model.getInstance();
+    private final Model model = Model.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_location);
 
-        locationName = (EditText) findViewById(R.id.locationName);
-        locationTypeSpinner = (Spinner) findViewById(R.id.locationTypeSpinner);
-        locationLatitude = (EditText) findViewById(R.id.locationLatitude);
-        locationLongitude = (EditText) findViewById(R.id.locationLongitude);
-        locationAddress = (EditText) findViewById(R.id.locationStreetAddress);
-        locationCity = (EditText) findViewById(R.id.locationCity);
-        locationState = (EditText) findViewById(R.id.locationState);
-        locationZip = (EditText) findViewById(R.id.locationZip);
-        locationNumber = (EditText) findViewById(R.id.locationPhoneNumber);
+        locationName = findViewById(R.id.locationName);
+        locationTypeSpinner = findViewById(R.id.locationTypeSpinner);
+        locationLatitude = findViewById(R.id.locationLatitude);
+        locationLongitude = findViewById(R.id.locationLongitude);
+        locationAddress = findViewById(R.id.locationStreetAddress);
+        locationCity = findViewById(R.id.locationCity);
+        locationState = findViewById(R.id.locationState);
+        locationZip = findViewById(R.id.locationZip);
+        locationNumber = findViewById(R.id.locationPhoneNumber);
 
-        locationAddButton = (Button) findViewById(R.id.locationAddButton);
+        locationAddButton = findViewById(R.id.locationAddButton);
 
         locationAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +74,8 @@ public class InsertLocationActivity extends AppCompatActivity {
         });
 
     }
-    private void toastLocationAdded(){
+
+    private void toastLocationAdded() {
         Toast.makeText(this, "Location has been added.", Toast.LENGTH_SHORT).show();
     }
 

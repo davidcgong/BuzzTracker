@@ -13,17 +13,19 @@ public class CSVFile {
 
     /**
      * creates a new CSVFile
+     *
      * @param inputStream the stream of data to read from the csv file
      */
-    public CSVFile(InputStream inputStream){
+    public CSVFile(InputStream inputStream) {
         this.inputStream = inputStream;
     }
 
     /**
      * returns a list of String[] which are the lines of inputStream split at ','
+     *
      * @return a list of String[] which are the lines if inputStream split at ','
      */
-    public List read(){
+    public List read() {
         List resultList = new ArrayList();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
@@ -32,19 +34,15 @@ public class CSVFile {
                 String[] row = csvLine.split(",");
                 resultList.add(row);
             }
-        }
-        catch (IOException ex) {
-            throw new RuntimeException("Error in reading CSV file: "+ex);
-        }
-        finally {
+        } catch (IOException ex) {
+            throw new RuntimeException("Error in reading CSV file: " + ex);
+        } finally {
             try {
                 inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
+            } catch (IOException e) {
+                throw new RuntimeException("Error while closing input stream: " + e);
             }
         }
         return resultList;
     }
 }
-

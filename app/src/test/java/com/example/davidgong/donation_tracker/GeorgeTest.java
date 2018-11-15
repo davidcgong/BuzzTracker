@@ -1,13 +1,14 @@
 package com.example.davidgong.donation_tracker;
 
-import android.widget.ArrayAdapter;
-
 import com.example.davidgong.donation_tracker.controllers.LocationDetailActivity;
 import com.example.davidgong.donation_tracker.model.Item;
 import com.example.davidgong.donation_tracker.model.Location;
 
 import org.junit.Test;
-import java.lang.reflect.*;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -32,7 +33,6 @@ public class GeorgeTest {
         testLocation.addItem(item1);
         testLocation.addItem(item2);
         testLocation.addItem(item3);
-
 
 
         try {

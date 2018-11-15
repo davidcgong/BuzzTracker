@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Map Fragment embedded with the map object -->
+<?xml version="1.0" encoding="utf-8"?><!-- Map Fragment embedded with the map object -->
 <fragment class="com.here.android.mpa.mapping.MapFragment"
     android:id="@+id/mapfragment"
     android:layout_width="match_parent"

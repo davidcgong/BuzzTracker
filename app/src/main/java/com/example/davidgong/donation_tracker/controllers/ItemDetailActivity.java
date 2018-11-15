@@ -1,7 +1,7 @@
 package com.example.davidgong.donation_tracker.controllers;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.davidgong.donation_tracker.R;
@@ -16,7 +16,7 @@ public class ItemDetailActivity extends Activity {
 
         Item item = (Item) getIntent().getSerializableExtra("Item");
 
-        TextView info = (TextView) findViewById(R.id.itemDetails);
+        TextView info = findViewById(R.id.itemDetails);
         info.setText(
                 "Added on " + item.getMonth() + "/" + item.getDay() + "/" + item.getYear() + " at " + item.getHour() + ":" + item.getMinute() + ".\n" +
                         "Location: " + item.getLocation().getLocationName() + "\n" +

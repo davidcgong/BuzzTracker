@@ -48,8 +48,12 @@
             android:name=".controllers.ItemDetailActivity"
             android:label="@string/title_activity_item_detail" />
 
-        <meta-data android:name="com.here.android.maps.appid" android:value="Qh18HdA0jQUHEuo9AvWf"/>
-        <meta-data android:name="com.here.android.maps.apptoken" android:value="dfUlFgZ1okIY4rmjbyBVcA"/>
+        <meta-data
+            android:name="com.here.android.maps.appid"
+            android:value="Qh18HdA0jQUHEuo9AvWf" />
+        <meta-data
+            android:name="com.here.android.maps.apptoken"
+            android:value="dfUlFgZ1okIY4rmjbyBVcA" />
 
         <activity
             android:name=".controllers.MapsActivity"
