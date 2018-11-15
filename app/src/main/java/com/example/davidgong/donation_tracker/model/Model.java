@@ -23,26 +23,52 @@ public class Model implements Serializable{
         return instance;
     }
 
+    /**
+     * creates model from saved model
+     * @param savedModel Model used to create new Model
+     */
     public void loadModel(Model savedModel) {
         addAllLocations(savedModel.getLocations());
         updateAccounts(savedModel.getAccounts());
     }
 
+    /**
+     * adds account to model
+     * @param username the username of the account to add
+     * @param password the password of the account to add
+     * @param accountType the account type of the account to add
+     */
     public void addAccount(String username, String password, String accountType) {
         accounts.put(username, new Account(username, password, accountType));
     }
 
+    /**
+     * add account to the model
+     * @param username the username of the account to add
+     * @param password the password of the account to add
+     * @param accountType the account type of the account to add
+     * @param location the location the account to add can access
+     */
     public void addAccount(String username, String password, String accountType, String location) {
         accounts.put(username, new Account(username, password, accountType, location));
     }
 
+    /**
+     * adds a location to the model
+     * @param a model to add to model
+     */
     public void addLocation(Location a){
         locations.add(a);
     }
 
+    /**
+     * returns the locations contained in this model
+     * @return  the locations contained in this model
+     */
     public List<Location> getLocations() {
         return locations;
     }
+
 
     public HashMap<String, Account> getAccounts() {
         return accounts;

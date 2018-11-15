@@ -8,6 +8,7 @@ public enum LocationType implements Parcelable {
 
     private String name;
     public static final Parcelable.Creator<LocationType> CREATOR = new Parcelable.Creator<LocationType>() {
+        @Override
         public LocationType createFromParcel(Parcel in) {
             String inName = in.readString();
             for(LocationType type: LocationType.values()) {
@@ -22,14 +23,26 @@ public enum LocationType implements Parcelable {
         }
     };
 
+    /**
+     * sets the name of this location type
+     * @param name the name of this location type
+     */
     LocationType(String name) {
         this.name = name;
     }
 
+    /**
+     * creates new location type from Parcel
+     * @param in parcel to make into LocationType
+     */
     LocationType(Parcel in) {
         name = in.readString();
     }
 
+    /**
+     * returns the loaction type name
+     * @return the loaction type name
+     */
     public String getName() {return name;}
 
     @Override

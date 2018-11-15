@@ -11,10 +11,18 @@ import java.util.List;
 public class CSVFile {
     InputStream inputStream;
 
+    /**
+     * creates a new CSVFile
+     * @param inputStream the stream of data to read from the csv file
+     */
     public CSVFile(InputStream inputStream){
         this.inputStream = inputStream;
     }
 
+    /**
+     * returns a list of String[] which are the lines of inputStream split at ','
+     * @return a list of String[] which are the lines if inputStream split at ','
+     */
     public List read(){
         List resultList = new ArrayList();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
