@@ -17,6 +17,8 @@ import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Model;
 
+import java.util.ArrayList;
+
 public class LocationDetailActivity extends Activity {
 
     private Location thisLocation;
@@ -87,35 +89,39 @@ public class LocationDetailActivity extends Activity {
     }
 
 
-    private void loadItemList(String search, Item.ItemType itemType){
+    private ArrayList<Item> loadItemList(String search, Item.ItemType itemType){
         ArrayAdapter adapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1);
+        ArrayList<Item> foundItems = new ArrayList<Item>();
 
         if(search != "" && itemType != Item.ItemType.NONE){
             for(Item i : thisLocation.getItems()){
                 if(i.getShortDesc().contains(search) && i.getItemType() == itemType){
-                    adapter.add(i);
+                    foundItems.add(i);
                 }
             }
         }else if (search != ""){
             for(Item i : thisLocation.getItems()){
                 if(i.getShortDesc().contains(search)){
-                    adapter.add(i);
+                    foundItems.add(i);
                 }
             }
         }else if (itemType != Item.ItemType.NONE){
             for(Item i : thisLocation.getItems()){
                 if(i.getItemType() == itemType){
-                    adapter.add(i);
+                    foundItems.add(i);
                 }
             }
         }else{
-            adapter.addAll(thisLocation.getItems());
+            foundItems.addAll(thisLocation.getItems());
         }
 
-        if(adapter.isEmpty()){
-            Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
+        if(foundItems.isEmpty()){
+            //Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
         }
 
+        adapter.addAll(foundItems);
+
+        /*
         ListView itemList = (ListView) findViewById(R.id._items);
         itemList.setAdapter(adapter);
 
@@ -130,6 +136,8 @@ public class LocationDetailActivity extends Activity {
                 startActivity(intent);
             }
         });
+        */
+        return foundItems;
     }
 
 
