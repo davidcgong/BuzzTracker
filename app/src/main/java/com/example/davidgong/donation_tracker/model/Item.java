@@ -28,6 +28,10 @@ public class Item implements Serializable{
      * @param itemType the type of this item
      */
     public Item(int day, int month, int year, int hour, int minute, Location location, String shortDesc, String longDesc, String value, ItemType itemType) {
+        if(shortDesc == ""){
+            throw new IllegalArgumentException("Short Description must be entered");
+        }
+
         this.day = day;
         this.month = month;
         this.year = year;
