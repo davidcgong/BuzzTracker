@@ -18,7 +18,7 @@ public class Account implements Serializable{
 
     public Account(String username, String password, String accountType, String locationAccess) {
         if(username == "" || password == "" || accountType == ""){
-            throw new IllegalArgumentException("One of the inputs was null.");
+            throw new IllegalArgumentException("One of the inputs was empty.");
         }
         this.username = username;
         this.password = password;
