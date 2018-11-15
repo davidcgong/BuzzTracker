@@ -17,6 +17,8 @@ import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Model;
 
+import java.util.ArrayList;
+
 public class LocationDetailActivity extends Activity {
 
     private Location thisLocation;
@@ -56,7 +58,7 @@ public class LocationDetailActivity extends Activity {
 
         searchView.setQueryHint("Search Item");
 
-        loadItemList("", Item.ItemType.NONE);
+        addItems(loadItemList("", Item.ItemType.NONE));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -66,7 +68,7 @@ public class LocationDetailActivity extends Activity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                loadItemList(searchView.getQuery().toString(), Item.ItemType.NONE);
+                addItems(loadItemList(searchView.getQuery().toString(), Item.ItemType.NONE));
                 return true;
             }
         });
@@ -74,7 +76,7 @@ public class LocationDetailActivity extends Activity {
         catSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                loadItemList(searchView.getQuery().toString(), (Item.ItemType) catSpinner.getSelectedItem());
+                addItems(loadItemList(searchView.getQuery().toString(), (Item.ItemType) catSpinner.getSelectedItem()));
             }
 
             @Override
@@ -87,32 +89,12 @@ public class LocationDetailActivity extends Activity {
     }
 
 
-    private void loadItemList(String search, Item.ItemType itemType){
+    private void addItems(ArrayList<Item> foundItems) {
         ArrayAdapter adapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1);
 
-        if(search != "" && itemType != Item.ItemType.NONE){
-            for(Item i : thisLocation.getItems()){
-                if(i.getShortDesc().contains(search) && i.getItemType() == itemType){
-                    adapter.add(i);
-                }
-            }
-        }else if (search != ""){
-            for(Item i : thisLocation.getItems()){
-                if(i.getShortDesc().contains(search)){
-                    adapter.add(i);
-                }
-            }
-        }else if (itemType != Item.ItemType.NONE){
-            for(Item i : thisLocation.getItems()){
-                if(i.getItemType() == itemType){
-                    adapter.add(i);
-                }
-            }
-        }else{
-            adapter.addAll(thisLocation.getItems());
-        }
+        adapter.addAll(foundItems);
 
-        if(adapter.isEmpty()){
+        if(foundItems.isEmpty()){
             Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
         }
 
@@ -130,6 +112,36 @@ public class LocationDetailActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    private ArrayList<Item> loadItemList(String search, Item.ItemType itemType){
+        ArrayList<Item> foundItems = new ArrayList<Item>();
+
+        if(search != "" && itemType != Item.ItemType.NONE){
+            for(Item i : thisLocation.getItems()){
+                if(i.getShortDesc().contains(search) && i.getItemType() == itemType){
+                    foundItems.add(i);
+                }
+            }
+        }else if (search != ""){
+            for(Item i : thisLocation.getItems()){
+                if(i.getShortDesc().contains(search)){
+                    foundItems.add(i);
+                }
+            }
+        }else if (itemType != Item.ItemType.NONE){
+            for(Item i : thisLocation.getItems()){
+                if(i.getItemType() == itemType){
+                    foundItems.add(i);
+                }
+            }
+        }else{
+            foundItems.addAll(thisLocation.getItems());
+        }
+
+
+
+        return foundItems;
     }
 
 

@@ -21,6 +21,10 @@ android {
             dirs 'libs'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
