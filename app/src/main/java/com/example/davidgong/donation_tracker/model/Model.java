@@ -69,36 +69,72 @@ public class Model implements Serializable{
         return locations;
     }
 
-
+    /**
+     * returns the accounts contained in this model
+     * @return the accounts contained in this model
+     */
     public HashMap<String, Account> getAccounts() {
         return accounts;
     }
 
+    /**
+     * adds all locations in locations to the model
+     * @param locations the locations to add to the model
+     */
     public void addAllLocations(List<Location> locations) {
         this.locations = locations;
     }
 
+    /**
+     * initializes the accounts using savedAccounts
+     * @param savedAccounts the accounts used for initialization
+     */
     public void updateAccounts(HashMap<String, Account> savedAccounts) {
         this.accounts = savedAccounts;
     }
 
+    /**
+     * returns true if the model contains username
+     * @param username the username being looked for
+     * @return true if the model contains username
+     */
     public boolean containsUsername(String username) {
         return accounts.containsKey(username);
     }
 
+    /**
+     * returns true if user with username and password exist in this  model
+     * @param username the username of the user being looked for in this model
+     * @param password the password of the user being looked for in this model
+     * @return true if user with username and password exist in this  model
+     */
     public boolean isAccount(String username, String password) {
         return containsUsername(username) && accounts.get(username).getPassword().equals(password);
     }
 
+    /**
+     * returns true if password is a valid password
+     * @param password the password to verify is valid
+     * @return true if password is a valid password
+     */
     public boolean validPassword(String password) {
         return Account.validPassword(password);
     }
 
+    /**
+     * returns true if username is a valid username
+     * @param username the username to verify is valid
+     * @return true if username is a valid username
+     */
     public boolean validUsername(String username) {
         return Account.validUsername(username);
     }
 
-    //get account type for LoginActivity
+    /**
+     * returns the account type of the account with username equal to username
+     * @param username the username of the account whos account type will be returned
+     * @return the account type of the account with username equal to username
+     */
     public String getAccountType(String username) {
         return accounts.get(username).getAccountType();
     }
