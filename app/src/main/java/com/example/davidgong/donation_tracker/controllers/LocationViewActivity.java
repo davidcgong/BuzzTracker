@@ -25,7 +25,7 @@ public class LocationViewActivity extends Activity {
 
         ArrayAdapter adapter = new ArrayAdapter<Location>(this, android.R.layout.simple_list_item_1, model.getLocations());
 
-        ListView locationList = (ListView) findViewById(R.id._locations);
+        ListView locationList = findViewById(R.id._locations);
         locationList.setAdapter(adapter);
 
         locationList.setOnItemClickListener(new AdapterView.OnItemClickListener(){

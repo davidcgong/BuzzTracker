@@ -4,7 +4,7 @@ import com.example.davidgong.donation_tracker.model.Account;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -16,11 +16,11 @@ public class AbhishekTest {
     public void accountCreationTest() {
         try {
             Account accBad = new Account("", "", "");
-        }catch (Exception e){
+        } catch (Exception e) {
             assertEquals("One of the inputs was empty.", e.getMessage());
         }
 
-        Account accGood = new Account("asdf","asdf","asdf");
+        Account accGood = new Account("asdf", "asdf", "asdf");
         assertEquals(accGood.getUsername(), "asdf");
     }
 }

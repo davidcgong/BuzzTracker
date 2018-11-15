@@ -35,24 +35,24 @@ public class InsertLocationActivity extends AppCompatActivity {
 
     private Button locationAddButton;
 
-    private Model model = Model.getInstance();
+    private final Model model = Model.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_location);
 
-        locationName = (EditText) findViewById(R.id.locationName);
-        locationTypeSpinner = (Spinner) findViewById(R.id.locationTypeSpinner);
-        locationLatitude = (EditText) findViewById(R.id.locationLatitude);
-        locationLongitude = (EditText) findViewById(R.id.locationLongitude);
-        locationAddress = (EditText) findViewById(R.id.locationStreetAddress);
-        locationCity = (EditText) findViewById(R.id.locationCity);
-        locationState = (EditText) findViewById(R.id.locationState);
-        locationZip = (EditText) findViewById(R.id.locationZip);
-        locationNumber = (EditText) findViewById(R.id.locationPhoneNumber);
+        locationName = findViewById(R.id.locationName);
+        locationTypeSpinner = findViewById(R.id.locationTypeSpinner);
+        locationLatitude = findViewById(R.id.locationLatitude);
+        locationLongitude = findViewById(R.id.locationLongitude);
+        locationAddress = findViewById(R.id.locationStreetAddress);
+        locationCity = findViewById(R.id.locationCity);
+        locationState = findViewById(R.id.locationState);
+        locationZip = findViewById(R.id.locationZip);
+        locationNumber = findViewById(R.id.locationPhoneNumber);
 
-        locationAddButton = (Button) findViewById(R.id.locationAddButton);
+        locationAddButton = findViewById(R.id.locationAddButton);
 
         locationAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
