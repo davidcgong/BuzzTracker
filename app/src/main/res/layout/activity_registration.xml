@@ -62,7 +62,6 @@
         </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/prompt_location" />
@@ -85,13 +84,11 @@
                 android:text="User" />
 
             <RadioButton
-                android:id="@+id/radioAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Admin" />
 
             <RadioButton
-                android:id="@+id/radioLocationEmployee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location Employee" />
@@ -116,7 +113,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Barrier
-        android:id="@+id/barrier2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="left" />

@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-public class Model implements Serializable {
+/**
+ * interface between android and plain java classes
+ */
+public final class Model implements Serializable {
     //Singleton Model
     public String locationFile = "model";
 

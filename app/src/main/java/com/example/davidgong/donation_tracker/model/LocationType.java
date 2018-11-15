@@ -3,6 +3,9 @@ package com.example.davidgong.donation_tracker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * the type of a location
+ */
 public enum LocationType implements Parcelable {
     DROP_OFF("Drop Off"), STORE("Store"), WAREHOUSE("Warehouse");
 

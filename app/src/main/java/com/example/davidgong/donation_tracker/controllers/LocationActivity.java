@@ -12,6 +12,10 @@ import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
 
+/**
+ * activity for android
+ */
+
 public class LocationActivity extends Activity {
 
     private Model model;

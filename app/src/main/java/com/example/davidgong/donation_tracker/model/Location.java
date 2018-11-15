@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * contains a locations data
+ */
 public class Location implements Serializable {
     private String locationName, locationType, streetAddress, city, state, zip, phoneNumber;
     private double latitude, longitude;

@@ -21,6 +21,10 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * activity for android
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private Button loginButton;

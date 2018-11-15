@@ -19,6 +19,9 @@ import com.example.davidgong.donation_tracker.model.Model;
 
 import java.util.ArrayList;
 
+/**
+ * activity for android
+ */
 public class LocationDetailActivity extends Activity {
 
     private Location thisLocation;

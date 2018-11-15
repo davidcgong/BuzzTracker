@@ -2,6 +2,10 @@ package com.example.davidgong.donation_tracker.model;
 
 import java.io.Serializable;
 
+/**
+ * contains all data about a item
+ */
+
 public class Item implements Serializable {
     private int day, month, year;
     private int hour, minute;

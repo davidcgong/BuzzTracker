@@ -21,6 +21,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+/**
+ * activity for android
+ */
+
 public class RegistrationActivity extends AppCompatActivity {
     private AutoCompleteTextView username;
     private EditText password;

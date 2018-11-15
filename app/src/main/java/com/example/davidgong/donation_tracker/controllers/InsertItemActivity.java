@@ -27,6 +27,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Calendar;
 
+/**
+ * activity for android
+ */
+
 public class InsertItemActivity extends AppCompatActivity {
 
     private Button timestampButton, addItemButton;
