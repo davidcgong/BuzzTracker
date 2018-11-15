@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class LoadItemListUnitTest {
+public class GeorgeTest {
     @Test
     public void search_withItems() {
         LocationDetailActivity lda = new LocationDetailActivity();

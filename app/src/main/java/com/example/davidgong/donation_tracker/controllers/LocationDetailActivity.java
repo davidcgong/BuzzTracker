@@ -58,7 +58,7 @@ public class LocationDetailActivity extends Activity {
 
         searchView.setQueryHint("Search Item");
 
-        loadItemList("", Item.ItemType.NONE);
+        addItems(loadItemList("", Item.ItemType.NONE));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -68,7 +68,7 @@ public class LocationDetailActivity extends Activity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                loadItemList(searchView.getQuery().toString(), Item.ItemType.NONE);
+                addItems(loadItemList(searchView.getQuery().toString(), Item.ItemType.NONE));
                 return true;
             }
         });
@@ -76,7 +76,7 @@ public class LocationDetailActivity extends Activity {
         catSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                loadItemList(searchView.getQuery().toString(), (Item.ItemType) catSpinner.getSelectedItem());
+                addItems(loadItemList(searchView.getQuery().toString(), (Item.ItemType) catSpinner.getSelectedItem()));
             }
 
             @Override
@@ -89,8 +89,32 @@ public class LocationDetailActivity extends Activity {
     }
 
 
-    private ArrayList<Item> loadItemList(String search, Item.ItemType itemType){
+    private void addItems(ArrayList<Item> foundItems) {
         ArrayAdapter adapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1);
+
+        adapter.addAll(foundItems);
+
+        if(foundItems.isEmpty()){
+            Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
+        }
+
+        ListView itemList = (ListView) findViewById(R.id._items);
+        itemList.setAdapter(adapter);
+
+        itemList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(LocationDetailActivity.this, ItemDetailActivity.class);
+
+                Item selectedItem = thisLocation.getItems().get(position);
+                intent.putExtra("Item", selectedItem);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private ArrayList<Item> loadItemList(String search, Item.ItemType itemType){
         ArrayList<Item> foundItems = new ArrayList<Item>();
 
         if(search != "" && itemType != Item.ItemType.NONE){
@@ -115,28 +139,8 @@ public class LocationDetailActivity extends Activity {
             foundItems.addAll(thisLocation.getItems());
         }
 
-        if(foundItems.isEmpty()){
-            //Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
-        }
 
-        adapter.addAll(foundItems);
 
-        /*
-        ListView itemList = (ListView) findViewById(R.id._items);
-        itemList.setAdapter(adapter);
-
-        itemList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(LocationDetailActivity.this, ItemDetailActivity.class);
-
-                Item selectedItem = thisLocation.getItems().get(position);
-                intent.putExtra("Item", selectedItem);
-
-                startActivity(intent);
-            }
-        });
-        */
         return foundItems;
     }
 
