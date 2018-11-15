@@ -16,7 +16,7 @@ public class ItemDetailActivity extends Activity {
 
         Item item = (Item) getIntent().getSerializableExtra("Item");
 
-        TextView info = findViewById(R.id.itemDetails);
+        TextView info = (TextView) findViewById(R.id.itemDetails);
         info.setText(
                 "Added on " + item.getMonth() + "/" + item.getDay() + "/" + item.getYear() + " at " + item.getHour() + ":" + item.getMinute() + ".\n" +
                         "Location: " + item.getLocation().getLocationName() + "\n" +

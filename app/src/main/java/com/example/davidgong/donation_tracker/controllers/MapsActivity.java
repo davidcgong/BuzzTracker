@@ -1,14 +1,22 @@
 package com.example.davidgong.donation_tracker.controllers;
 
+import android.graphics.Point;
 import android.graphics.PointF;
-import android.os.Bundle;
+import android.nfc.Tag;
 import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Location;
 import com.example.davidgong.donation_tracker.model.Model;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.here.android.mpa.common.GeoCoordinate;
 import com.here.android.mpa.common.OnEngineInitListener;
 import com.here.android.mpa.common.ViewObject;
@@ -125,7 +133,7 @@ public class MapsActivity extends FragmentActivity {
                         public boolean onMapObjectsSelected(List<ViewObject> list) {
                             for (ViewObject viewObj : list) {
                                 if (viewObj.getBaseType() == ViewObject.Type.USER_OBJECT) {
-                                    if (((MapObject) viewObj).getType() == MapObject.Type.MARKER) {
+                                    if (((MapObject)viewObj).getType() == MapObject.Type.MARKER) {
                                         // if what we selected was a map marker
                                         MapMarker selectedMarker = (MapMarker) viewObj;
                                         // if details are not visible, then show the info bubble
@@ -151,6 +159,8 @@ public class MapsActivity extends FragmentActivity {
             }
         });
     }
+
+
 
 
     /**

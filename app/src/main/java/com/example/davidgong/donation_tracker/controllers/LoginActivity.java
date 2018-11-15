@@ -3,20 +3,22 @@ package com.example.davidgong.donation_tracker.controllers;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.app.LoaderManager.LoaderCallbacks;
+
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.AsyncTask;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,8 +30,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Model;
+import com.example.davidgong.donation_tracker.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask;
+    private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mLoginView;
@@ -74,10 +76,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //test case accounts, so we don't have to make a new account evrey single time
         model.addAccount("davidcgong", "cs2340cool", "Location Employee");
 
-        mLoginView = findViewById(R.id.login);
+        mLoginView = (AutoCompleteTextView) findViewById(R.id.login);
         populateAutoComplete();
 
-        mPasswordView = findViewById(R.id.password);
+        mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -89,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mSignInButton = findViewById(R.id.sign_in_button);
+        Button mSignInButton = (Button) findViewById(R.id.sign_in_button);
         mSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,14 +202,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(login, password);
-            // Toast.makeText(this, "Login credentials have been verified.", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Login credentials have been verified.", Toast.LENGTH_SHORT).show();
             mAuthTask.execute((Void) null);
             //navigate to next activity which is user's home page (later on add user details here)
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            //pass in the account type before signing in so the HomeActivity controller knows how to handle what to display
+             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+             //pass in the account type before signing in so the HomeActivity controller knows how to handle what to display
             // make sure that username has to be unique for all users or else we have to check password difference too
-            intent.putExtra("ACCOUNT_TYPE", model.getAccountType(login));
-            startActivity(intent);
+             intent.putExtra("ACCOUNT_TYPE", model.getAccountType(login));
+             startActivity(intent);
         }
     }
 

@@ -36,15 +36,15 @@ public class LocationDetailActivity extends Activity {
 
         thisLocation = (Location) getIntent().getSerializableExtra("Location");
 
-        nameText = findViewById(R.id.locationName);
-        typeText = findViewById(R.id.locationType);
-        coordinatesText = findViewById(R.id.locationCoordinates);
-        addressText = findViewById(R.id.locationAddress);
-        phoneNumberText = findViewById(R.id.locationPhoneNumber);
+        nameText = (TextView) findViewById(R.id.locationName);
+        typeText = (TextView) findViewById(R.id.locationType);
+        coordinatesText = (TextView) findViewById(R.id.locationCoordinates);
+        addressText = (TextView) findViewById(R.id.locationAddress);
+        phoneNumberText = (TextView) findViewById(R.id.locationPhoneNumber);
 
-        searchView = findViewById(R.id.Item_Search);
+        searchView = (SearchView) findViewById(R.id.Item_Search);
 
-        catSpinner = findViewById(R.id.categorySpinner);
+        catSpinner = (Spinner) findViewById(R.id.categorySpinner);
         catSpinner.setAdapter(new ArrayAdapter<Item.ItemType>(this, android.R.layout.simple_spinner_item, Item.ItemType.values()));
 
         nameText.setText(thisLocation.getLocationName());
@@ -116,7 +116,7 @@ public class LocationDetailActivity extends Activity {
             Toast.makeText(this, "There are no items matching your search.", Toast.LENGTH_LONG).show();
         }
 
-        ListView itemList = findViewById(R.id._items);
+        ListView itemList = (ListView) findViewById(R.id._items);
         itemList.setAdapter(adapter);
 
         itemList.setOnItemClickListener(new AdapterView.OnItemClickListener(){

@@ -1,7 +1,9 @@
 package com.example.davidgong.donation_tracker;
 
+import com.example.davidgong.donation_tracker.model.Account;
 import com.example.davidgong.donation_tracker.model.Item;
 import com.example.davidgong.donation_tracker.model.Location;
+import com.example.davidgong.donation_tracker.model.LocationType;
 
 import org.junit.Test;
 
@@ -17,7 +19,7 @@ public class DavidTest {
     public void itemCreationTest() {
         try {
             Item itemBad = new Item(8, 1, 8, 8, 5, new Location(), "", "", "", Item.ItemType.NONE);
-        } catch (Exception e) {
+        }catch (Exception e){
             assertEquals("Short Description must be entered", e.getMessage());
         }
 

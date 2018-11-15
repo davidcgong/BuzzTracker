@@ -45,10 +45,10 @@ public class InsertItemActivity extends AppCompatActivity {
 
         ArrayAdapter adapter = new ArrayAdapter<Location>(this, android.R.layout.simple_list_item_1, model.getLocations());
 
-        spinner = findViewById(R.id.locationSpinner);
+        spinner = (Spinner) findViewById(R.id.locationSpinner);
         spinner.setAdapter(adapter);
 
-        catSpinner = findViewById(R.id.categorySpinner);
+        catSpinner = (Spinner) findViewById(R.id.categorySpinner);
 
         catSpinner.setAdapter(new ArrayAdapter<Item.ItemType>(this, android.R.layout.simple_spinner_item, Item.ItemType.values()));
 
@@ -56,7 +56,7 @@ public class InsertItemActivity extends AppCompatActivity {
         longDesc = findViewById(R.id.longDescText);
         value = findViewById(R.id.valueText);
 
-        timestampButton = findViewById(R.id.timestampButton);
+        timestampButton = (Button) findViewById(R.id.timestampButton);
         timestampButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +68,7 @@ public class InsertItemActivity extends AppCompatActivity {
             }
         });
 
-        addItemButton = findViewById(R.id.addItemButton);
+        addItemButton = (Button) findViewById(R.id.addItemButton);
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,13 +107,11 @@ public class InsertItemActivity extends AppCompatActivity {
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
-        @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Calendar calendar = Calendar.getInstance();
             return new DatePickerDialog(getActivity(), this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         }
 
-        @Override
         public void onDateSet(DatePicker picker, int year, int month, int day) {
             TextView tv = getActivity().findViewById(R.id.timestampText);
 
@@ -122,13 +120,11 @@ public class InsertItemActivity extends AppCompatActivity {
     }
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
-        @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Calendar calendar = Calendar.getInstance();
             return new TimePickerDialog(getActivity(), this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
         }
 
-        @Override
         public void onTimeSet(TimePicker picker, int hour, int minute) {
             TextView tv = getActivity().findViewById(R.id.timestampText);
 

@@ -2,7 +2,7 @@ package com.example.davidgong.donation_tracker.model;
 
 import java.io.Serializable;
 
-public class Item implements Serializable {
+public class Item implements Serializable{
     private int day, month, year;
     private int hour, minute;
     private Location location;
@@ -16,20 +16,19 @@ public class Item implements Serializable {
 
     /**
      * creates a new Item
-     *
-     * @param day       the day this item was donated
-     * @param month     the month this item was donated
-     * @param year      the year this item was donated
-     * @param hour      the hour this item was donated
-     * @param minute    the minute this item was donated
-     * @param location  the location where this item was donated
+     * @param day the day this item was donated
+     * @param month the month this item was donated
+     * @param year the year this item was donated
+     * @param hour the hour this item was donated
+     * @param minute the minute this item was donated
+     * @param location the location where this item was donated
      * @param shortDesc a short description of this item
-     * @param longDesc  a long description of this item
-     * @param value     the value of this item
-     * @param itemType  the type of this item
+     * @param longDesc a long description of this item
+     * @param value the value of this item
+     * @param itemType the type of this item
      */
     public Item(int day, int month, int year, int hour, int minute, Location location, String shortDesc, String longDesc, String value, ItemType itemType) {
-        if (shortDesc == "") {
+        if(shortDesc == ""){
             throw new IllegalArgumentException("Short Description must be entered");
         }
 
@@ -46,7 +45,7 @@ public class Item implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         return itemType.name() + ": " + shortDesc + " (" + month + "/" + day + "/" + year + " " + hour + ":" + minute + ")";
         /*
         return "Added on " + month + "/" + day + "/" + year + " at " + hour + ":" + minute + ".\n" +
@@ -59,7 +58,6 @@ public class Item implements Serializable {
 
     /**
      * returns the day this item was donated
-     *
      * @return day item was donated
      */
     public int getDay() {
@@ -68,7 +66,6 @@ public class Item implements Serializable {
 
     /**
      * sets the day the item was donated
-     *
      * @param day the day the item
      */
     public void setDay(int day) {
@@ -77,7 +74,6 @@ public class Item implements Serializable {
 
     /**
      * returns the month this item was donated
-     *
      * @return the month this item was donated
      */
     public int getMonth() {
@@ -86,7 +82,6 @@ public class Item implements Serializable {
 
     /**
      * sets the month this item was donated
-     *
      * @param month the month this item was donated
      */
     public void setMonth(int month) {
@@ -95,7 +90,6 @@ public class Item implements Serializable {
 
     /**
      * returns the year this item was donated
-     *
      * @return the year this item was donated
      */
     public int getYear() {
@@ -104,7 +98,6 @@ public class Item implements Serializable {
 
     /**
      * sets the year this item was donated
-     *
      * @param year the year this item was donated
      */
     public void setYear(int year) {
@@ -113,7 +106,6 @@ public class Item implements Serializable {
 
     /**
      * returns the hour this item was donated
-     *
      * @return the hour this item was donated
      */
     public int getHour() {
@@ -122,7 +114,6 @@ public class Item implements Serializable {
 
     /**
      * sets the hour this item was donated
-     *
      * @param hour the hour this item was donated
      */
     public void setHour(int hour) {
@@ -131,7 +122,6 @@ public class Item implements Serializable {
 
     /**
      * returns the minute this item wsa donated
-     *
      * @return the minute this item wsa donated
      */
     public int getMinute() {
@@ -140,7 +130,6 @@ public class Item implements Serializable {
 
     /**
      * sets the minute this item was donated
-     *
      * @param minute the minute this item was donated
      */
     public void setMinute(int minute) {
@@ -149,7 +138,6 @@ public class Item implements Serializable {
 
     /**
      * returns the location this item was donated
-     *
      * @return the location this item was donated
      */
     public Location getLocation() {
@@ -158,7 +146,6 @@ public class Item implements Serializable {
 
     /**
      * sets the location this item was donated
-     *
      * @param location the location where this item was donated
      */
     public void setLocation(Location location) {
@@ -167,7 +154,6 @@ public class Item implements Serializable {
 
     /**
      * returns the short description of this item
-     *
      * @return the short description of this item
      */
     public String getShortDesc() {
@@ -176,7 +162,6 @@ public class Item implements Serializable {
 
     /**
      * sets the short description of this item
-     *
      * @param shortDesc the short description of this item
      */
     public void setShortDesc(String shortDesc) {
@@ -185,7 +170,6 @@ public class Item implements Serializable {
 
     /**
      * returns the long description of this item
-     *
      * @return the long description of this item
      */
     public String getLongDesc() {
@@ -194,7 +178,6 @@ public class Item implements Serializable {
 
     /**
      * sets the long description of this item
-     *
      * @param longDesc the long description of this item
      */
     public void setLongDesc(String longDesc) {
@@ -203,7 +186,6 @@ public class Item implements Serializable {
 
     /**
      * returns the value of this item
-     *
      * @return the value of this item
      */
     public String getValue() {
@@ -212,7 +194,6 @@ public class Item implements Serializable {
 
     /**
      * sets the value of this item
-     *
      * @param value the value of this item
      */
     public void setValue(String value) {
@@ -221,7 +202,6 @@ public class Item implements Serializable {
 
     /**
      * returns the item type of this item
-     *
      * @return the item type of this item
      */
     public ItemType getItemType() {
@@ -230,7 +210,6 @@ public class Item implements Serializable {
 
     /**
      * sets the item type of this item
-     *
      * @param itemType the item type of this item
      */
     public void setItemType(ItemType itemType) {
