@@ -13,13 +13,13 @@ public class Account implements Serializable{
     private String locationAccess;
 
     public Account(String username, String password, String accountType) {
-        this.username = username;
-        this.password = password;
-        this.accountType = accountType;
-        this.locationAccess = null;
+        this(username, password, accountType, null);
     }
 
     public Account(String username, String password, String accountType, String locationAccess) {
+        if(username == "" || password == "" || accountType == ""){
+            throw new IllegalArgumentException("One of the inputs was null.");
+        }
         this.username = username;
         this.password = password;
         this.accountType = accountType;
