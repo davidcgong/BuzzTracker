@@ -13,7 +13,7 @@ public class Location implements Serializable {
     /**
      * creates a new Location
      *
-     * @param locationName  the name of this location
+     * @param locationName  the name1 of this location
      * @param locationType  the location type of this location
      * @param latitude      the latitude of this location
      * @param longitude     the longitude of this location
@@ -50,9 +50,9 @@ public class Location implements Serializable {
     }
 
     /**
-     * returns the name of this location
+     * returns the name1 of this location
      *
-     * @return the name of this location
+     * @return the name1 of this location
      */
     public String getLocationName() {
         return locationName;
@@ -140,9 +140,9 @@ public class Location implements Serializable {
     }
 
     /**
-     * sets the name of this location
+     * sets the name1 of this location
      *
-     * @param locationName the name of this location
+     * @param locationName the name1 of this location
      */
     public void setLocationName(String locationName) {
         this.locationName = locationName;

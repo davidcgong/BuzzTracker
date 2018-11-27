@@ -53,7 +53,7 @@ public class Item implements Serializable {
                 "Location: " + location.getLocationName() + "\n" +
                 "Description: " + longDesc + "\n" +
                 "Value: " + value + "\n" +
-                "Category: " + itemType.name();
+                "Category: " + itemType.name1();
         */
     }
 
