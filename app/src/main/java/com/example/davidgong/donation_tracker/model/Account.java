@@ -2,9 +2,6 @@ package com.example.davidgong.donation_tracker.model;
 
 import java.io.Serializable;
 
-/**
- * representation of a account
- */
 public class Account implements Serializable {
     private static final int validPasswordLength = 7;
     private static final int validUsernameLength = 7;
@@ -148,7 +145,7 @@ public class Account implements Serializable {
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof Account &&
+        return other != null && other instanceof Account &&
                 ((Account) other).getUsername().equals(username);
     }
 

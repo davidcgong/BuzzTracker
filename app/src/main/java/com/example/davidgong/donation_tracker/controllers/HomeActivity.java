@@ -15,23 +15,18 @@ import com.example.davidgong.donation_tracker.model.Model;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
-/**
- * activity for android
- */
-
 public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private Model model;
-    String accountType;
 
+    private Button viewLocationsButton;
+    private Button insertLocationsButton;
+    private Button insertItemButton;
+    private Button locationMapButton;
+    private String accountType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button viewLocationsButton;
-        Button insertLocationsButton;
-        Button insertItemButton;
-        Button locationMapButton;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         model = Model.getInstance();
@@ -40,8 +35,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         accountType = getIntent().getStringExtra("ACCOUNT_TYPE");
         //if account type was determined to be location employee, show loc emp functionality
         if (accountType.equals("Location Employee")) {
-            Toast.makeText(this, "Welcome, Location Employee!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Welcome, Location Employee!", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -49,8 +43,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         viewLocationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,
-                        LocationViewActivity.class);
+                Intent intent = new Intent(HomeActivity.this, LocationViewActivity.class);
                 startActivity(intent);
             }
         });
@@ -60,8 +53,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 if (employeeCheck()) {
-                    Intent intent = new Intent(HomeActivity.this,
-                            InsertLocationActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, InsertLocationActivity.class);
                     startActivity(intent);
                 }
             }
@@ -72,8 +64,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 if (employeeCheck()) {
-                    Intent intent = new Intent(HomeActivity.this,
-                            InsertItemActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, InsertItemActivity.class);
                     startActivity(intent);
                 }
             }
@@ -104,8 +95,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             case R.id.log_out_app:
                 //add in more log out functionality at some point here and maybe make modular
                 Toast.makeText(this, "Logging you out...", Toast.LENGTH_SHORT).show();
-                Intent returnToMain = new Intent(HomeActivity.this,
-                        MainActivity.class);
+                Intent returnToMain = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(returnToMain);
         }
         return super.onOptionsItemSelected(item);
@@ -113,8 +103,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private boolean employeeCheck() {
         if (!accountType.equals("Location Employee") && !accountType.equals("Admin")) {
-            Toast.makeText(this, "You're not a location employee or an admin",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You're not a location employee or an admin", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -129,8 +118,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            double currLatitude = location.getLatitude();
 //            double currLongitude = location.getLongitude();
 //            LatLng aLocation = new LatLng(currLatitude, currLongitude);
-//            googleMap.addMarker(new MarkerOptions().position(aLocation).
-// title(location.getLocationName()));
+//            googleMap.addMarker(new MarkerOptions().position(aLocation).title(location.getLocationName()));
 //            index++;
 //        }
 
@@ -138,8 +126,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 //    private void loadLocationData() {
-//        InputStream is = getResources().openRawResource(getResources().getIdentifier
-// ("location_data", "raw", getPackageName()));
+//        InputStream is = getResources().openRawResource(getResources().getIdentifier("location_data", "raw", getPackageName()));
 //
 //        List<Location> locations = new ArrayList<Location>();
 //        String line;
@@ -151,8 +138,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            while((line = br.readLine()) != null) {
 //                if (!firstLine) {
 //                    String[] values = line.split(",");
-//                    Location newLocation = new Location(values[1], values[8], Double.parseDouble
-// (values[2]), Double.parseDouble(values[3]),
+//                    Location newLocation = new Location(values[1], values[8], Double.parseDouble(values[2]), Double.parseDouble(values[3]),
 //                            values[4], values[5], values[6], values[7], values[9]);
 //                    locations.add(newLocation);
 //                } else {

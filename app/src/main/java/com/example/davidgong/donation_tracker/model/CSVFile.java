@@ -8,9 +8,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * reads cvs files
- */
 public class CSVFile {
     InputStream inputStream;
 

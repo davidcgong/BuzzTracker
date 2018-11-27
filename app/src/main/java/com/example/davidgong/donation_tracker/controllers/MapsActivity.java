@@ -19,10 +19,6 @@ import com.here.android.mpa.mapping.MapObject;
 
 import java.util.List;
 
-/**
- * activity for android
- */
-
 public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap;
@@ -34,8 +30,6 @@ public class MapsActivity extends FragmentActivity {
     private com.here.android.mpa.mapping.MapFragment mapFragment;
 
     private static final String TAG = "MapsActivity";
-
-    private static final double SCALE = 1.5;
 
 
     @Override
@@ -114,7 +108,7 @@ public class MapsActivity extends FragmentActivity {
                         counter++;
                     }
                     // Set the zoom level to more zoomed
-                    map.setZoomLevel((map.getMinZoomLevel() / SCALE));
+                    map.setZoomLevel((map.getMinZoomLevel() / 1.5));
                     //create listener
 
 
@@ -152,22 +146,22 @@ public class MapsActivity extends FragmentActivity {
                     mapFragment.getMapGesture().addOnGestureListener(listener);
 
                 } else {
-
+                    System.out.println("ERROR: Cannot initialize Map Fragment");
                 }
             }
         });
     }
 
 
-//     /**
-//     * Manipulates the map once available.
-//     * This callback is triggered when the map is ready to be used.
-//     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-//     * we just add a marker near Sydney, Australia.
-//     * If Google Play services is not installed on the device, the user will be prompted to install
-//     * it inside the SupportMapFragment. This method will only be triggered once the user has
-//     * installed Google Play services and returned to the app.
-//     */
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
 //    @Override
 //    public void onMapReady(GoogleMap googleMap) {
 //        mMap = googleMap;

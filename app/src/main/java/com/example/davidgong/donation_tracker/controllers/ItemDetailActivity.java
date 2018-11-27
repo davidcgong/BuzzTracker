@@ -7,10 +7,6 @@ import android.widget.TextView;
 import com.example.davidgong.donation_tracker.R;
 import com.example.davidgong.donation_tracker.model.Item;
 
-/**
- * activity for android
- */
-
 public class ItemDetailActivity extends Activity {
 
     @Override
