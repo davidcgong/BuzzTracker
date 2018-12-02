@@ -15,7 +15,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.example.davidgong.donation_tracker.R;
+import com.example.davidgong.donation_tracker.model.Account;
 import com.example.davidgong.donation_tracker.model.Model;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,10 +34,19 @@ public class RegistrationActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton radioButton;
 
+    //for some reason database references in firebase cause an error with the arrayadapter in the model
+    // for the sake of time I'm not following a bit of the architectural style and putting the database
+    // reference here.
+
+    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        FirebaseApp.initializeApp(this);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
         //grabbing veiws
         Button registerBtn = findViewById(R.id.btn_register);
@@ -96,8 +109,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (valid) {
                     if (usertypetxt == "Location Employee") {
                         model.addAccount(usernametxt, passwordtxt, usertypetxt, location);
+                        databaseReference.child(usernametxt).setValue(new Account(usernametxt, passwordtxt, usertypetxt, location));
                     } else {
                         model.addAccount(usernametxt, passwordtxt, usertypetxt);
+                        databaseReference.child(usernametxt).setValue(new Account(usernametxt, passwordtxt, usertypetxt));
                     }
 
                     writeModel();

@@ -1,5 +1,9 @@
 package com.example.davidgong.donation_tracker.model;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +15,7 @@ public class Model implements Serializable {
     private static final Model instance = new Model();
     private HashMap<String, Account> accounts;
     private List<Location> locations;
+
 
     private Model() {
         accounts = new HashMap<>();

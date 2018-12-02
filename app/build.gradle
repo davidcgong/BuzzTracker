@@ -45,4 +45,8 @@ dependencies {
      *
      */
     testImplementation 'org.mockito:mockito-core:2.19.0'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
 }
+
+apply plugin: 'com.google.gms.google-services'
