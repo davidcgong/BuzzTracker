@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
     private Button registrationButton;
     private Button locationsButton;
+    private Button guestButton;
 
     private Model model;
 
@@ -38,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         //hardcoding my name in because it's annoying to register all the time
         model.addAccount("abhishek", "abhishek", "Location Employee", "asdf");
+        model.addAccount("guest", "guest", "User", "asdf");
 
         loginButton = findViewById(R.id.logIn_button);
         registrationButton = findViewById(R.id.registration_button);
+        guestButton = findViewById(R.id.guest_button);
 //        locationsButton = (Button) findViewById(R.id.locations_button);
 
         boolean clearSavedModel = false;
@@ -69,6 +72,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        guestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                //pass in the account type before signing in so the HomeActivity controller knows how to handle what to display
+                // make sure that username has to be unique for all users or else we have to check password difference too
+                intent.putExtra("ACCOUNT_TYPE", "User");
                 startActivity(intent);
             }
         });

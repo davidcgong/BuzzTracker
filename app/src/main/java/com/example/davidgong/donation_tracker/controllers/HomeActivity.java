@@ -36,6 +36,10 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         //if account type was determined to be location employee, show loc emp functionality
         if (accountType.equals("Location Employee")) {
             Toast.makeText(this, "Welcome, Location Employee!", Toast.LENGTH_SHORT).show();
+        } else if (accountType.equals("Admin")) {
+            Toast.makeText(this, "Welcome, Administrator!", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(this, "Welcome, User!", Toast.LENGTH_SHORT).show();
         }
 
 

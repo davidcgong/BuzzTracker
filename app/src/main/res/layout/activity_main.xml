@@ -19,6 +19,12 @@
         android:weightSum="2">
 
         <Button
+            android:id="@+id/guest_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guest" />
+
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/logIn_button"
@@ -28,9 +34,9 @@
             />
 
         <Button
+            android:id="@+id/registration_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/registration_button"
 
 
             android:text="Sign up"
