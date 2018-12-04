@@ -80,10 +80,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private Model model;
     private DatabaseReference databaseReference;
     private List<Account> accountList;
+    private int timesFailed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        timesFailed = 0;
+
         setContentView(R.layout.activity_login);
         //initialize/re-initialize firebase
         FirebaseApp.initializeApp(this);
@@ -173,6 +177,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private void attemptLogin() {
         if (mAuthTask != null) {
+            return;
+        }
+
+        if(timesFailed > 3){
+            mLoginView.setError("You've failed more than 3 times. Please try again later.");
             return;
         }
 
@@ -274,6 +283,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 mLoginView.setError(getString(R.string.error_invalid_user_password));
                 focusView = mLoginView;
                 cancel = true;
+                timesFailed++;
             }
 
         }
