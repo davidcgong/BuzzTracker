@@ -15,9 +15,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,10 +31,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.davidgong.donation_tracker.R;
+import com.example.davidgong.donation_tracker.model.Account;
 import com.example.davidgong.donation_tracker.model.Model;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.security.Key;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -64,11 +78,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private Model model;
+    private DatabaseReference databaseReference;
+    private List<Account> accountList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //initialize/re-initialize firebase
+        FirebaseApp.initializeApp(this);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
+        accountList = new ArrayList<>();
+
         // Set up the login form.
         model = Model.getInstance();
         //test case accounts, so we don't have to make a new account evrey single time
@@ -159,8 +181,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String login = mLoginView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String login = mLoginView.getText().toString();
+        final String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -185,11 +207,78 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 //        }
         // for hardcoding purposes, cancel is true until login and password is proper
         // change this when we actually add firebase
+
+        // the code below also only checks the local, we also want to check the database
         if (!model.isAccount(login, password)) {
-            mLoginView.setError(getString(R.string.error_invalid_user_password));
-            focusView = mLoginView;
-            cancel = true;
+            // try to read data from firebase database, if its fine we dont change anything and log the user in.
+            final boolean[] found = {false};
+            databaseReference.orderByKey().addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    HashMap<String, String> current = (HashMap<String, String>) dataSnapshot.getValue();
+                    if (current.get("password").equals(password)) {
+                        //entry has been found and we can just return out of this conditional without changing anything
+                        Log.d("LoginActivity", "Account entry found.");
+                        found[0] = true;
+                        // we also want to add this to the model since it is faster to extract from model than database
+                        // BUG here: If you added this manually to the database and then try to go back once, it displays HomeActivity twice.
+                        String addUsername = current.get("username");
+                        String addPassword = current.get("password");
+                        String addAccountType = current.get("accountType");
+                        model.addAccount(addUsername, addPassword, addAccountType);
+
+                        // Show a progress spinner, and kick off a background task to
+                        // perform the user login attempt.
+                        showProgress(true);
+                        mAuthTask = new UserLoginTask(login, password);
+                        // Toast.makeText(this, "Login credentials have been verified.", Toast.LENGTH_SHORT).show();
+                        mAuthTask.execute((Void) null);
+                        //navigate to next activity which is user's home page (later on add user details here)
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        //pass in the account type before signing in so the HomeActivity controller knows how to handle what to display
+                        // make sure that username has to be unique for all users or else we have to check password difference too
+                        intent.putExtra("ACCOUNT_TYPE", model.getAccountType(login));
+                        startActivity(intent);
+                        // yeah this code sucks but ya know
+                        return;
+                    }
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+            // if the query doesn't return, this part of the code executes
+            if (found[0] == false) {
+                Log.d("LoginActivity", "Entry for " + login + " was not found.");
+                mLoginView.setError(getString(R.string.error_invalid_user_password));
+                focusView = mLoginView;
+                cancel = true;
+            }
+
         }
+
+
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first

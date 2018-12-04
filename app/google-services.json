@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "814974026558",
+    "firebase_url": "https://donationtracker-1541646176441.firebaseio.com",
+    "project_id": "donationtracker-1541646176441",
+    "storage_bucket": "donationtracker-1541646176441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814974026558:android:456ef570fe52bd73",
+        "android_client_info": {
+          "package_name": "com.example.davidgong.donation_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814974026558-n6scnrdheuaensk7ejaqbghlam9a4fd2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.davidgong.donation_tracker",
+            "certificate_hash": "fbccef3b937e996b30cc74464e11b58a13696142"
+          }
+        },
+        {
+          "client_id": "814974026558-oabpivpjhrk78es90i25ecb3snbmt95r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.davidgong.donation_tracker",
+            "certificate_hash": "dd9ff6692005883d6784da55b867db3cbaeb205a"
+          }
+        },
+        {
+          "client_id": "814974026558-rb29878qt5g5b3okj26ssbbmt577abkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxIM3PsSJr4RKBED2850W6nXPqaXj1FYQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814974026558-rb29878qt5g5b3okj26ssbbmt577abkp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
