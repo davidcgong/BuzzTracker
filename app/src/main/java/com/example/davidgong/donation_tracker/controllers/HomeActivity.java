@@ -15,7 +15,7 @@ import com.example.davidgong.donation_tracker.model.Model;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
-public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class HomeActivity extends AppCompatActivity {
 
     private Model model;
 
@@ -109,47 +109,4 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         return true;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-//        int index = 0;
-//        for (Location location : model.getLocations()) {
-//            // Add markers for locations
-//            Log.d("whatever", "Location " + index + ": " + location.getLocationName());
-//            double currLatitude = location.getLatitude();
-//            double currLongitude = location.getLongitude();
-//            LatLng aLocation = new LatLng(currLatitude, currLongitude);
-//            googleMap.addMarker(new MarkerOptions().position(aLocation).title(location.getLocationName()));
-//            index++;
-//        }
-
-
-    }
-
-//    private void loadLocationData() {
-//        InputStream is = getResources().openRawResource(getResources().getIdentifier("location_data", "raw", getPackageName()));
-//
-//        List<Location> locations = new ArrayList<Location>();
-//        String line;
-//        boolean firstLine = true;
-//
-//        try {
-//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-//
-//            while((line = br.readLine()) != null) {
-//                if (!firstLine) {
-//                    String[] values = line.split(",");
-//                    Location newLocation = new Location(values[1], values[8], Double.parseDouble(values[2]), Double.parseDouble(values[3]),
-//                            values[4], values[5], values[6], values[7], values[9]);
-//                    locations.add(newLocation);
-//                } else {
-//                    firstLine = false;
-//                }
-//            }
-//        } catch (java.io.IOException ie) {
-//
-//        }
-//
-//        model.addAllLocations(locations);
-//        Log.i("locations list size", Integer.toString(locations.size()));
-//    }
 }

@@ -211,6 +211,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // the code below also only checks the local, we also want to check the database
         if (!model.isAccount(login, password)) {
             // try to read data from firebase database, if its fine we dont change anything and log the user in.
+            // https://donationtracker-1541646176441.firebaseio.com/ <--- this is the reference, still not 100% sure how real-time database works
             final boolean[] found = {false};
             databaseReference.orderByKey().addChildEventListener(new ChildEventListener() {
                 @Override
